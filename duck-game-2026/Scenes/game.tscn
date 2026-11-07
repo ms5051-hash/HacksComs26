@@ -25,8 +25,8 @@ position = Vector2(953, 754)
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
 z_index = 1
-position = Vector2(14, 41)
-scale = Vector2(0.13333334, 0.13611111)
+position = Vector2(5.0000005, 54)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_h4fw4")
 script = ExtResource("2_wrm1d")
 Bullet = ExtResource("1_wrm1d")
@@ -40,7 +40,7 @@ scale = Vector2(0.39999515, 0.39999878)
 texture = ExtResource("4_3dryh")
 
 [node name="Feet" type="Sprite2D" parent="PlayerArea2D" unique_id=871130237]
-position = Vector2(0, 27)
+position = Vector2(0, 54)
 scale = Vector2(0.16000122, 0.19999996)
 texture = ExtResource("5_ldgsr")
 
