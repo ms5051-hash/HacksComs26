@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="2_ly6xb"]
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="3_m8nr8"]
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="4_47rga"]
+[ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="6_yyxd1"]
+[ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="7_0vbqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47rga"]
 
@@ -30,8 +34,13 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu6ay"]
 
-[node name="Main" type="Node2D" unique_id=596674964]
+[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("title", "leaderboard_panel", "credits_panel", "menu_buttons")]
 script = ExtResource("1_2c717")
+title = NodePath("CanvasLayer/Control/Panel/Title")
+leaderboard_panel = NodePath("CanvasLayer/Control/LeaderboardPanel")
+credits_panel = NodePath("CanvasLayer/Control/CreditsPanel")
+leaderboard_duration = 1.5
+menu_buttons = [NodePath("CanvasLayer/Control/Panel/PlayButton"), NodePath("CanvasLayer/Control/Panel/LeaderBoardButton"), NodePath("CanvasLayer/Control/Panel/CreditsButton"), NodePath("CanvasLayer/Control/Panel/ExitButton")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=418878514]
 
@@ -50,20 +59,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_08630")
 
 [node name="Title" type="Label" parent="CanvasLayer/Control/Panel" unique_id=382179026]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -320.0
+offset_left = -493.0
 offset_top = 200.0
-offset_right = 320.0
+offset_right = 493.0
 offset_bottom = 360.0
 grow_horizontal = 2
-pivot_offset = Vector2(320, 80)
+pivot_offset = Vector2(493, 80)
 theme_override_colors/font_color = Color(0, 0.7882353, 1, 1)
-theme_override_colors/font_outline_color = Color(0.63529414, 0.8980392, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.2140898, 0.9899928, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("2_hewda")
 theme_override_font_sizes/font_size = 150
@@ -124,6 +134,13 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_ly6xb")
 
+[node name="BasicWoodButton" type="Sprite2D" parent="CanvasLayer/Control/Panel/LeaderBoardButton" unique_id=782906894]
+z_index = -1
+position = Vector2(202.79681, 38.17995)
+rotation = 3.1415927
+scale = Vector2(0.47759366, -0.19471972)
+texture = ExtResource("4_47rga")
+
 [node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=394703208]
 layout_mode = 1
 anchors_preset = 8
@@ -147,6 +164,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
 text = "Credits"
 script = ExtResource("2_ly6xb")
+
+[node name="BasicWoodButton2" type="Sprite2D" parent="CanvasLayer/Control/Panel/CreditsButton" unique_id=704674647]
+z_index = -1
+position = Vector2(128.57498, 36.97504)
+rotation = -3.1415925
+scale = Vector2(0.30214342, -0.18921953)
+texture = ExtResource("4_47rga")
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=715469778]
 layout_mode = 1
@@ -172,6 +196,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
 text = "Exit"
 script = ExtResource("2_ly6xb")
 
+[node name="BasicWoodButton3" type="Sprite2D" parent="CanvasLayer/Control/Panel/ExitButton" unique_id=1187098356]
+z_index = -1
+position = Vector2(69.72493, 37.524994)
+rotation = -3.1415925
+scale = Vector2(0.19654372, -0.17161952)
+texture = ExtResource("4_47rga")
+
 [node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]
 layout_mode = 1
 anchors_preset = 15
@@ -181,6 +212,48 @@ offset_top = 1080.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1581982329]
+z_index = 1
+layout_mode = 0
+offset_right = 1912.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "LEADERBOARD
+"
+
+[node name="Icon" type="Sprite2D" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1985461368]
+position = Vector2(960, 539.99994)
+scale = Vector2(15, 8.437501)
+texture = ExtResource("6_yyxd1")
+
+[node name="CreditsPanel" type="Panel" parent="CanvasLayer/Control" unique_id=1177735752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1080.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CreditsPanel" unique_id=892277760]
+z_index = 1
+layout_mode = 0
+offset_right = 1912.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 50
+text = "CREDITS
+"
+
+[node name="Icon" type="Sprite2D" parent="CanvasLayer/Control/CreditsPanel" unique_id=802036132]
+position = Vector2(960, 539.99994)
+scale = Vector2(15, 8.437501)
+texture = ExtResource("6_yyxd1")
+
+[node name="Sky" type="Sprite2D" parent="." unique_id=951986576]
+position = Vector2(960, 544)
+texture = ExtResource("7_0vbqt")
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_exited"]
