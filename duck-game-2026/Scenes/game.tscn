@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="2_qxrlw"]
 [ext_resource type="Script" uid="uid://bih4b7egfqkbu" path="res://Scripts/Player.gd" id="2_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://5r56sm06r63p" path="res://Assets/Tower.png" id="4_3dryh"]
+[ext_resource type="Script" uid="uid://c6gps3v3gtknn" path="res://Scripts/enemy_spawner.gd" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dj467x4eo72on" path="res://Scenes/area_2d.tscn" id="6_i6g32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 
@@ -12,9 +14,11 @@
 [node name="BulletArea2D" parent="." unique_id=1332803089 instance=ExtResource("1_wrm1d")]
 visible = false
 rotation = -4.710644
+collision_layer = 4
+collision_mask = 2
 
 [node name="PlayerArea2D" type="Area2D" parent="." unique_id=195692555]
-position = Vector2(953, 819)
+position = Vector2(953, 794)
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
 texture = ExtResource("2_qxrlw")
@@ -28,3 +32,22 @@ shape = SubResource("RectangleShape2D_wrm1d")
 position = Vector2(-1.0001221, 131)
 scale = Vector2(0.39999515, 0.39999878)
 texture = ExtResource("4_3dryh")
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1191588194 node_paths=PackedStringArray("spawnPoints", "player")]
+script = ExtResource("5_wowpa")
+enemy = ExtResource("6_i6g32")
+spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight")]
+player = NodePath("../PlayerArea2D")
+
+[node name="SpawnPointLeft" type="Node2D" parent="EnemySpawner" unique_id=1896892598]
+position = Vector2(0, 786)
+
+[node name="SpawnPointRight" type="Node2D" parent="EnemySpawner" unique_id=708173840]
+position = Vector2(1919, 780)
+
+[node name="Enemy" parent="." unique_id=638344407 node_paths=PackedStringArray("player") instance=ExtResource("6_i6g32")]
+visible = false
+collision_layer = 2
+player = NodePath("../PlayerArea2D")
+
+[connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
