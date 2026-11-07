@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="2_ly6xb"]
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="3_m8nr8"]
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="4_47rga"]
+[ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="6_w1dup"]
 [ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="6_yyxd1"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="7_0vbqt"]
 
@@ -88,10 +89,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -95.5
-offset_right = 179.0
-offset_bottom = 87.5
+offset_left = -176.0
+offset_top = -76.0
+offset_right = 182.0
+offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(179, 91.5)
@@ -115,15 +116,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = 92.0
-offset_right = 212.0
-offset_bottom = 169.0
+offset_left = -207.99994
+offset_top = 148.0
+offset_right = 216.0
+offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.11492171
 pivot_offset = Vector2(212, 39)
 theme_override_fonts/font = ExtResource("3_m8nr8")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mhr8t")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0bgj2")
@@ -136,9 +138,9 @@ script = ExtResource("2_ly6xb")
 
 [node name="BasicWoodButton" type="Sprite2D" parent="CanvasLayer/Control/Panel/LeaderBoardButton" unique_id=782906894]
 z_index = -1
-position = Vector2(202.79681, 38.17995)
+position = Vector2(245.39372, 36.15196)
 rotation = 3.1415927
-scale = Vector2(0.47759366, -0.19471972)
+scale = Vector2(0.58642685, -0.23571303)
 texture = ExtResource("4_47rga")
 
 [node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=394703208]
@@ -148,12 +150,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.5
-offset_top = 196.0
-offset_right = 130.5
-offset_bottom = 273.0
+offset_left = -123.5
+offset_top = 271.5
+offset_right = 134.5
+offset_bottom = 348.5
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.05095058
 pivot_offset = Vector2(127.5, 39)
 theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
@@ -179,12 +182,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = 300.0
-offset_right = 72.5
-offset_bottom = 377.0
+offset_left = -63.99994
+offset_top = 404.00006
+offset_right = 81.0
+offset_bottom = 481.00006
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.45993412
 pivot_offset = Vector2(72.5, 39)
 theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
@@ -202,6 +206,39 @@ position = Vector2(69.72493, 37.524994)
 rotation = -3.1415925
 scale = Vector2(0.19654372, -0.17161952)
 texture = ExtResource("4_47rga")
+
+[node name="Rope" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=888072439]
+z_index = -2
+position = Vector2(824, 663.5)
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("6_w1dup")
+
+[node name="Rope2" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=1337175937]
+z_index = -2
+position = Vector2(1096, 664)
+rotation = -0.1953874
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("6_w1dup")
+
+[node name="Rope3" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=1018288992]
+z_index = -2
+position = Vector2(888, 784)
+rotation = -0.16158192
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("6_w1dup")
+
+[node name="Rope4" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=664813082]
+z_index = -2
+position = Vector2(1048, 776)
+rotation = -0.01208266
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("6_w1dup")
+
+[node name="Rope5" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=430430914]
+z_index = -2
+position = Vector2(936, 904.00006)
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("6_w1dup")
 
 [node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]
 layout_mode = 1
