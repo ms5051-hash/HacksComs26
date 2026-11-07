@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bh251ho7eey2a"
+path="res://.godot/imported/Sunny Spells.ttf-21c01ae8a6270c409bf2a411cd81c6f1.fontdata"
+
+[deps]
+
+source_file="res://Fonts/Sunny Spells.ttf"
+dest_files=["res://.godot/imported/Sunny Spells.ttf-21c01ae8a6270c409bf2a411cd81c6f1.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=3
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
