@@ -24,11 +24,7 @@ texture = ExtResource("2_qxrlw")
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D" unique_id=215517761]
 shape = SubResource("RectangleShape2D_wrm1d")
 
-[node name="Nest" type="Area2D" parent="." unique_id=1584011816]
-position = Vector2(951.9999, 950)
+[node name="NestSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=1385897532]
+position = Vector2(-1.0001221, 131)
 scale = Vector2(0.39999515, 0.39999878)
-
-[node name="NestSprite2D" type="Sprite2D" parent="Nest" unique_id=1385897532]
 texture = ExtResource("4_3dryh")
-
-[node name="NestCollisionShape2D" type="CollisionShape2D" parent="Nest" unique_id=426662023]
