@@ -1,3 +1,55 @@
 [gd_scene format=3 uid="uid://bmp5n7opbw8x2"]
 
+[ext_resource type="Script" uid="uid://bxe6bko5214ui" path="res://Scripts/MainMenu.gd" id="1_2c717"]
+
 [node name="Main" type="Node2D" unique_id=596674964]
+script = ExtResource("1_2c717")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=418878514]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=771654708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=545234983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=1238124888]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 12.0
+offset_right = 87.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(88, 50)
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/Panel" unique_id=382179026]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 184.0
+offset_right = 787.0
+offset_bottom = 280.0
+pivot_offset = Vector2(210, 48)
+theme_override_font_sizes/font_size = 70
+text = "DUCK GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Control/Panel/PlayButton" to="." method="_on_play_button_pressed"]
