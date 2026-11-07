@@ -1,4 +1,4 @@
-extends Area2D
+extends Sprite2D
 
 @export var Bullet: PackedScene
 
@@ -18,7 +18,7 @@ func shoot():
 	
 	#makes bullet a child of player
 	owner.add_child(b)
-	b.transform = $PlayerSprite2D.global_transform
+	b.transform = global_transform
 	
 func _physics_process(delta: float) -> void:
 	#get the mouse position, subtract that from the objects position

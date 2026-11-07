@@ -15,11 +15,11 @@ rotation = -4.710644
 
 [node name="PlayerArea2D" type="Area2D" parent="." unique_id=195692555]
 position = Vector2(953, 819)
-script = ExtResource("2_wrm1d")
-Bullet = ExtResource("1_wrm1d")
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
 texture = ExtResource("2_qxrlw")
+script = ExtResource("2_wrm1d")
+Bullet = ExtResource("1_wrm1d")
 
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D" unique_id=215517761]
 shape = SubResource("RectangleShape2D_wrm1d")
