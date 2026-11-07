@@ -23,4 +23,9 @@ func _physics_process(delta: float) -> void:
 	#get the mouse position, subtract that from the objects position
 	#so we get a vector from the player to the mouse
 	#convert to an angle, and finally convert to radians
-	rotation = (get_global_mouse_position() - global_position).angle()
+	if (get_global_mouse_position().x>global_position.x):
+		flip_h = false
+		rotation = (get_global_mouse_position()-global_position).angle()
+	else:
+		flip_h = true
+		rotation = (-(get_global_mouse_position()-global_position)).angle()
