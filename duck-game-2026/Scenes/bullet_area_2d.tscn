@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dulyfpm5eyt2c"]
+
+[ext_resource type="Script" uid="uid://b4tochci5er60" path="res://Scripts/Shooting.gd" id="1_eiu4d"]
+[ext_resource type="Texture2D" uid="uid://b8ix1fxjtgfrr" path="res://Assets/Egg.png" id="1_o8x0p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dryh"]
+
+[node name="BulletArea2D" type="Area2D" unique_id=1332803089]
+script = ExtResource("1_eiu4d")
+
+[node name="BulletSprite2D" type="Sprite2D" parent="." unique_id=2090375803]
+rotation = -1.5830137
+texture = ExtResource("1_o8x0p")
+
+[node name="BulletCollisionShape2D" type="CollisionShape2D" parent="." unique_id=259236577]
+shape = SubResource("CircleShape2D_3dryh")
