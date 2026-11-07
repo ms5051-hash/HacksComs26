@@ -1,3 +1,24 @@
 [gd_scene format=3 uid="uid://cl1hoj4bjccms"]
 
+[ext_resource type="PackedScene" uid="uid://dulyfpm5eyt2c" path="res://Scenes/bullet_area_2d.tscn" id="1_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://bih4b7egfqkbu" path="res://Scripts/Player.gd" id="2_wrm1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
+
 [node name="Game" type="Node2D" unique_id=1315213113]
+
+[node name="BulletArea2D" parent="." unique_id=1332803089 instance=ExtResource("1_wrm1d")]
+visible = false
+rotation = -4.710644
+
+[node name="PlayerArea2D" type="Area2D" parent="." unique_id=195692555]
+position = Vector2(960, 571)
+script = ExtResource("2_wrm1d")
+Bullet = ExtResource("1_wrm1d")
+
+[node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
+texture = ExtResource("2_qxrlw")
+
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D" unique_id=215517761]
+shape = SubResource("RectangleShape2D_wrm1d")

@@ -1,3 +1,136 @@
 [gd_scene format=3 uid="uid://bmp5n7opbw8x2"]
 
+[ext_resource type="Script" uid="uid://bxe6bko5214ui" path="res://Scripts/MainMenu.gd" id="1_2c717"]
+[ext_resource type="FontFile" uid="uid://dl215066b8sx1" path="res://Fonts/Matcha World.ttf" id="2_hewda"]
+[ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="2_ly6xb"]
+
 [node name="Main" type="Node2D" unique_id=596674964]
+script = ExtResource("1_2c717")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=418878514]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=771654708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=545234983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/Panel" unique_id=382179026]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 360.0
+grow_horizontal = 2
+pivot_offset = Vector2(320, 80)
+theme_override_colors/font_color = Color(0, 0.7882353, 1, 1)
+theme_override_colors/font_outline_color = Color(0.63529414, 0.8980392, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_hewda")
+theme_override_font_sizes/font_size = 150
+text = "DUCK GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=1238124888]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -76.5
+offset_right = 128.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(88, 50)
+theme_override_font_sizes/font_size = 100
+text = "Play"
+script = ExtResource("2_ly6xb")
+
+[node name="LeaderBoardButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=364268272]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 92.0
+offset_right = 192.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(192, 39)
+theme_override_font_sizes/font_size = 50
+text = "Leaderboard"
+script = ExtResource("2_ly6xb")
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=394703208]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 196.0
+offset_right = 91.0
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(90, 50)
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+script = ExtResource("2_ly6xb")
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=715469778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 300.0
+offset_right = 64.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 39)
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+script = ExtResource("2_ly6xb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel" unique_id=1827850252]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="mouse_entered" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/Panel/LeaderBoardButton" to="CanvasLayer/Control/Panel/LeaderBoardButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Panel/LeaderBoardButton" to="CanvasLayer/Control/Panel/LeaderBoardButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/LeaderBoardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/Panel/CreditsButton" to="CanvasLayer/Control/Panel/CreditsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Panel/CreditsButton" to="CanvasLayer/Control/Panel/CreditsButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/Panel/ExitButton" to="CanvasLayer/Control/Panel/ExitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Panel/ExitButton" to="CanvasLayer/Control/Panel/ExitButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/ExitButton" to="." method="_on_exit_button_pressed"]
