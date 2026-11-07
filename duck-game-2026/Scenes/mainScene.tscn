@@ -3,6 +3,32 @@
 [ext_resource type="Script" uid="uid://bxe6bko5214ui" path="res://Scripts/MainMenu.gd" id="1_2c717"]
 [ext_resource type="FontFile" uid="uid://dl215066b8sx1" path="res://Fonts/Matcha World.ttf" id="2_hewda"]
 [ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="2_ly6xb"]
+[ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="3_m8nr8"]
+[ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="4_47rga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47rga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyxd1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vbqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1dup"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uvydw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhr8t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0d1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bgj2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8a2l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_so5kr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oy1pr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu6ay"]
 
 [node name="Main" type="Node2D" unique_id=596674964]
 script = ExtResource("1_2c717")
@@ -52,15 +78,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -76.5
-offset_right = 128.0
-offset_bottom = 68.5
+offset_left = -179.0
+offset_top = -95.5
+offset_right = 179.0
+offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(88, 50)
+pivot_offset = Vector2(179, 91.5)
+theme_override_constants/icon_max_width = 350
+theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_47rga")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yyxd1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vbqt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w1dup")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uvydw")
 text = "Play"
+icon = ExtResource("4_47rga")
+icon_alignment = 1
 script = ExtResource("2_ly6xb")
 
 [node name="LeaderBoardButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=364268272]
@@ -70,15 +105,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
+offset_left = -212.0
 offset_top = 92.0
-offset_right = 192.0
+offset_right = 212.0
 offset_bottom = 169.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(192, 39)
+pivot_offset = Vector2(212, 39)
+theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mhr8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0bgj2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
 text = "Leaderboard"
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("2_ly6xb")
 
 [node name="CreditsButton" type="Button" parent="CanvasLayer/Control/Panel" unique_id=394703208]
@@ -88,14 +131,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
+offset_left = -127.5
 offset_top = 196.0
-offset_right = 91.0
+offset_right = 130.5
 offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(90, 50)
+pivot_offset = Vector2(127.5, 39)
+theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mhr8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oy1pr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
 text = "Credits"
 script = ExtResource("2_ly6xb")
 
@@ -106,21 +155,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
+offset_left = -72.5
 offset_top = 300.0
-offset_right = 64.0
+offset_right = 72.5
 offset_bottom = 377.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(64, 39)
+pivot_offset = Vector2(72.5, 39)
+theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mhr8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uu6ay")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
 text = "Exit"
 script = ExtResource("2_ly6xb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel" unique_id=1827850252]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1080.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_exited"]

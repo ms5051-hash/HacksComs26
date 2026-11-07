@@ -1,7 +1,7 @@
 extends Button
 
 var default_scale: Vector2 = Vector2.ONE
-var hover_scale: Vector2 = Vector2(1.1, 1.1)
+var hover_scale: Vector2 = Vector2(1.2, 1.2)
 var tween_duration: float = 0.5
 
 
