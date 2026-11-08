@@ -50,7 +50,7 @@ func is_playing() -> bool:
 var predator_stats: Dictionary = {
 	PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
 	PredatorType.HAWK: {"hp": 20.0, "speed": 150, "nest_damage": 2.0, "sticks": 3, "score": 2, "flying": true},
-	PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 3, "flying": false},
+	PredatorType.SNAKE: {"hp": 50.0, "speed": 35.0, "nest_damage": 10, "sticks": 5, "score": 3, "flying": false},
 }
 
 func get_predator_stat(type: int, stat: String):
@@ -77,6 +77,7 @@ const start_egg_fire_rate: int = 1
 # 2 health every second
 const start_regen: float = 2.0
 const level_max_multiplier: float = 1.25
+const start_split_shot: int = 1
 
 # FIELDS HERE
 
@@ -90,6 +91,8 @@ var egg_damage: float = start_egg_damage
 # egg shots per second
 var egg_fire_rate: float = start_egg_fire_rate
 var regen: float = start_regen
+var split_shot: int = start_split_shot
+
 var enemy_base_hp: float = start_enemy_base_hp
 var sticks_per_kill: int = start_sticks_per_kill
 var score_per_kill: int = start_score_per_kill
@@ -188,6 +191,7 @@ func reset_everything() -> void:
 	score = 0
 	level_xp = 0
 	level = 0
+	split_shot = start_split_shot
 	pass
 # Function that when you lose brings you to the GameOver Scene
 # Func _ready() -> void

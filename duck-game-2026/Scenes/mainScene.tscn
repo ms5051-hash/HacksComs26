@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://bh251ho7eey2a" path="res://Fonts/Sunny Spells.ttf" id="11_0bgj2"]
 [ext_resource type="Texture2D" uid="uid://4upkc5467x8y" path="res://Assets/Duck.png" id="14_uu6ay"]
 [ext_resource type="AudioStream" uid="uid://d1i5s8d2usd56" path="res://Assets/Sounds/EggCrackWithGoosh.wav" id="16_uu6ay"]
+[ext_resource type="PackedScene" uid="uid://dnup2yd5odftw" path="res://Scenes/explosion.tscn" id="17_08630"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
 
@@ -414,6 +415,8 @@ texture = ExtResource("7_0vbqt")
 [node name="EggSplat" type="AudioStreamPlayer2D" parent="." unique_id=2036451310]
 stream = ExtResource("16_uu6ay")
 volume_db = 10.0
+
+[node name="Explosion" parent="." unique_id=826396512 instance=ExtResource("17_08630")]
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_exited"]

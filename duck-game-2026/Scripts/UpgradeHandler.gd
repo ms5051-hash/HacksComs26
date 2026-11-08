@@ -4,14 +4,16 @@ enum Upgrades{
 	MaxHealth,
 	FireRate,
 	Damage,
-	Regen
+	Regen,
+	SplitShot
 }
 
 var upgrade_snippets = {
 	Upgrades.MaxHealth: "Increase Max Health",
 	Upgrades.FireRate: "Increase Fire Rate",
 	Upgrades.Damage: "Increase Egg Damage",
-	Upgrades.Regen: "Increase Regen"
+	Upgrades.Regen: "Increase Regen",
+	Upgrades.SplitShot: "Eggsplosion!"
 }
 
 @export var array_of_upgrade_buttons: Array[Button]
@@ -52,7 +54,7 @@ func _tween_down() -> void:
 	number_array.shuffle()
 	
 	# get the first three and those are the buttons
-	button_upgrade_array[0] = number_array[0]
+	button_upgrade_array[0] = 4
 	button_upgrade_array[1] = number_array[1]
 	button_upgrade_array[2] = number_array[2]
 	
@@ -123,10 +125,14 @@ func _determine_upgrade(button_num: int) -> void:
 			Global.egg_fire_rate *= Global.fire_rate_multiplier
 		Upgrades.MaxHealth:
 			Global.nest_max_hp *= Global.nest_max_hp_multiplier
+			Global.nest_hp *= Global.nest_max_hp_multiplier
 		Upgrades.Damage:
 			Global.egg_damage *= Global.egg_damage_multiplier
 		Upgrades.Regen:
 			Global.regen *= Global.regen_multiplier
+		Upgrades.SplitShot:
+			Global.split_shot +=1
+			print(Global.split_shot)
 	pass
 
 func _on_random_one_pressed() -> void:

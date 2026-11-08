@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b8ix1fxjtgfrr" path="res://Assets/Egg.png" id="1_o8x0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3dryh"]
-radius = 40.311287
+radius = 122.376465
 
 [node name="BulletArea2D" type="Area2D" unique_id=1332803089]
-visible = false
 script = ExtResource("1_eiu4d")
+bullet_prefab = null
 
 [node name="BulletSprite2D" type="Sprite2D" parent="." unique_id=2090375803]
 z_index = 4096

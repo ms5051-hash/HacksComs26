@@ -2,6 +2,7 @@ extends Node2D
 
 @export var enemy: PackedScene
 @export var hawk: PackedScene
+@export var snake: PackedScene
 @export var spawnPoints: Array[Node2D]
 @export var eps = .1
 @export var hps = 0
@@ -104,6 +105,8 @@ func _process(delta: float) -> void:
 	
 	if(timeUntilFoxSpawn>spawnFoxRate):
 		#Spawn()
+		Spawn()
+		#SpawnSnake()
 		timeUntilFoxSpawn = 0
 	else:
 		timeUntilFoxSpawn+=delta
@@ -143,3 +146,18 @@ func SpawnHawk():
 	add_child(enemySpawn)
 	
 	$"..".play_sfx(preload("res://Assets/Sounds/CawCaw.wav"))
+	
+func SpawnSnake():
+	var rng = RandomNumberGenerator	.new()
+	var location = spawnPoints[rng.randi()%2].global_position
+	var enemySpawn = snake.instantiate()
+	enemySpawn.player = player
+	enemySpawn.add_to_group("enemies")
+	enemySpawn.global_position = location
+	var yValue = enemySpawn.global_position.y
+	yValue+=rng.randf_range(-20, 20)
+	enemySpawn.global_position.y = yValue
+	enemySpawn.z_index+=yValue/10
+	add_child(enemySpawn)
+	
+	$"..".play_sfx(preload("res://Assets/Sounds/FoxMove.wav"))
