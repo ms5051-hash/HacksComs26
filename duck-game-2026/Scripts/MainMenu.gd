@@ -8,6 +8,7 @@ enum MenuPanelState{
 
 @export var title: Label
 @export var leaderboard_panel: Panel
+@export var leaderboard_places: Array[Label]
 @export var credits_panel: Panel
 @export_range(0,5) var leaderboard_duration: float = 1
 @export var menu_buttons: Array[Button]
@@ -15,6 +16,17 @@ var current_menu_state: MenuPanelState = MenuPanelState.Menu
 var currently_tweening: bool = false
 
 func _ready() -> void:
+	var scores = Leaderboard.get_top_scores()
+	
+	# fill leaderboard
+	for i in range(leaderboard_places.size()):
+		var leaderboard_text = str(i + 1) + ") "
+		if(scores.size() > i):
+			leaderboard_text = leaderboard_text + scores[i]
+		else:
+			leaderboard_text = leaderboard_text + str(0)
+		leaderboard_places[i].text = leaderboard_text
+	
 	# set up title tween
 	var tween = create_tween()
 	
@@ -135,7 +147,10 @@ func _on_exit_button_pressed() -> void:
 # Extra helpers
 func _set_buttons(enabled: bool) -> void:
 	for b:Button in menu_buttons:
-		b.disabled = !enabled
+		if !enabled:
+			b.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
+		else:
+			b.mouse_filter = Control.MouseFilter.MOUSE_FILTER_STOP
 	pass
 
 # Update
