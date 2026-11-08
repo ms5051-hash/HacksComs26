@@ -10,7 +10,7 @@ var all_scores: Array = []
 var last_score: int = 0
 var last_rank: int = 0
 
-func ready() -> void:
+func _ready() -> void:
 	load_data()
 	
 # When the game ends then run this. We want all scores to get stored
@@ -71,11 +71,15 @@ func save_data() -> void:
 		
 func load_data() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
+		print("FILE DOESNT EXIST")
 		return
 	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	print("File!")
 	if file: 
+		print("FILE EXISTS!")
 		var data = file.get_var()
 		if data is Dictionary: 
+			print("LOADING DATA IN...")
 			all_scores.clear()
 			for entry in data.get("all_scores", []):
 				if entry is Dictionary:
