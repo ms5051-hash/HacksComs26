@@ -14,4 +14,7 @@ func _process(delta: float) -> void:
 	var y = position.y;
 	position+=(player.global_position-global_position).normalized()*speed*delta
 	position.y = y;
-	
+	if(position.x < 960):
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
