@@ -1,0 +1,406 @@
+[gd_scene format=3 uid="uid://cl1hoj4bjccms"]
+
+[ext_resource type="Script" uid="uid://ci8x06tp1n0a5" path="res://Scripts/GameManager.gd" id="1_nb51f"]
+[ext_resource type="PackedScene" uid="uid://dulyfpm5eyt2c" path="res://Scenes/bullet_area_2d.tscn" id="1_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://4upkc5467x8y" path="res://Assets/Duck.png" id="2_h4fw4"]
+[ext_resource type="Script" uid="uid://bih4b7egfqkbu" path="res://Scripts/Player.gd" id="2_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://5r56sm06r63p" path="res://Assets/Tower.png" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://tpeuj6jcbn06" path="res://Assets/DuckFeet.png" id="5_ldgsr"]
+[ext_resource type="Script" uid="uid://c6gps3v3gtknn" path="res://Scripts/enemy_spawner.gd" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bboxla60jsyjl" path="res://Scenes/enemy.tscn" id="6_i6g32"]
+[ext_resource type="Texture2D" uid="uid://d1lt7s0rsxdj3" path="res://Assets/Grass.png" id="7_v158k"]
+[ext_resource type="PackedScene" uid="uid://bgaq537fwgryv" path="res://Scenes/hawk.tscn" id="8_1phco"]
+[ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://b1vokjcvwfc45" path="res://Scripts/ScoreBoard.gd" id="10_ldgsr"]
+[ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="10_o5yvi"]
+[ext_resource type="Script" uid="uid://doivtfckqllut" path="res://Scripts/progress_bar.gd" id="12_rku1e"]
+[ext_resource type="Script" uid="uid://dw4orikc7qb7e" path="res://Scripts/LevelBar.gd" id="13_rfjv2"]
+[ext_resource type="Script" uid="uid://jttn5eh0ivcg" path="res://Scripts/GameOver.gd" id="14_1phco"]
+[ext_resource type="Script" uid="uid://di6utqbcdy4hu" path="res://Scripts/UpgradeHandler.gd" id="14_7nbq1"]
+[ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="17_85qyi"]
+[ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="17_ewbju"]
+[ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="19_iivbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
+size = Vector2(246, 333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfjv2"]
+bg_color = Color(0.81, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nb51f"]
+bg_color = Color(0.90968984, 0.4767207, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnt18"]
+bg_color = Color(0.526635, 0.47309998, 0.83, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nnt18"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewbju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85qyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iivbl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nbq1"]
+
+[node name="Game" type="Node2D" unique_id=1315213113]
+script = ExtResource("1_nb51f")
+
+[node name="BulletArea2D" parent="." unique_id=1332803089 node_paths=PackedStringArray("player") instance=ExtResource("1_wrm1d")]
+rotation = -4.710644
+scale = Vector2(10.88, 10)
+player = NodePath("../PlayerArea2D/PlayerSprite2D")
+
+[node name="PlayerArea2D" type="Area2D" parent="." unique_id=195692555]
+position = Vector2(953, 754)
+
+[node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
+z_index = 1
+position = Vector2(-1, 50)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_h4fw4")
+script = ExtResource("2_wrm1d")
+Bullet = ExtResource("1_wrm1d")
+
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D" unique_id=215517761]
+position = Vector2(-16, 142.5)
+shape = SubResource("RectangleShape2D_wrm1d")
+
+[node name="NestSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=1385897532]
+position = Vector2(-1.0001221, 131)
+scale = Vector2(0.39999515, 0.39999878)
+texture = ExtResource("4_3dryh")
+
+[node name="Feet" type="Sprite2D" parent="PlayerArea2D" unique_id=871130237]
+position = Vector2(0, 56)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ldgsr")
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1191588194 node_paths=PackedStringArray("spawnPoints", "player")]
+script = ExtResource("5_wowpa")
+enemy = ExtResource("6_i6g32")
+hawk = ExtResource("8_1phco")
+spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight"), NodePath("SpawnPointLeft2"), NodePath("SpawnPointRight2")]
+player = NodePath("../PlayerArea2D")
+
+[node name="SpawnPointLeft" type="Node2D" parent="EnemySpawner" unique_id=1896892598]
+position = Vector2(0, 1000)
+
+[node name="SpawnPointRight" type="Node2D" parent="EnemySpawner" unique_id=708173840]
+position = Vector2(1920, 1000)
+
+[node name="SpawnPointLeft2" type="Node2D" parent="EnemySpawner" unique_id=320921292]
+position = Vector2(0, 200)
+
+[node name="SpawnPointRight2" type="Node2D" parent="EnemySpawner" unique_id=2067627256]
+position = Vector2(1920, 200)
+
+[node name="Enemy" parent="." unique_id=638344407 node_paths=PackedStringArray("player") instance=ExtResource("6_i6g32")]
+visible = false
+player = NodePath("../PlayerArea2D")
+
+[node name="Hawk" parent="." unique_id=392546175 node_paths=PackedStringArray("player") instance=ExtResource("8_1phco")]
+visible = false
+player = NodePath("../PlayerArea2D")
+
+[node name="Grass" type="Node2D" parent="." unique_id=1617349816]
+z_index = 1000
+z_as_relative = false
+position = Vector2(959, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass" unique_id=1176823992]
+z_index = 1000
+z_as_relative = false
+texture = ExtResource("7_v158k")
+
+[node name="Background" type="Node2D" parent="." unique_id=441702575]
+position = Vector2(959, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=36381252]
+z_index = -1
+texture = ExtResource("8_h4fw4")
+
+[node name="UI" type="Control" parent="." unique_id=567824755]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 1922.0
+offset_bottom = 1080.0
+
+[node name="XPLabel" type="Label" parent="UI" unique_id=1988153872 node_paths=PackedStringArray("score_label")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -410.0
+offset_top = 256.0
+offset_right = 410.0
+offset_bottom = 369.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99926454, 0.9119006, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.28627452)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_o5yvi")
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
+script = ExtResource("10_ldgsr")
+score_label = NodePath(".")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=1280641760 node_paths=PackedStringArray("array_of_upgrade_buttons")]
+script = ExtResource("14_7nbq1")
+array_of_upgrade_buttons = [NodePath("RandomOne"), NodePath("RandomTwo"), NodePath("RandomThree")]
+
+[node name="HealthBar" type="ProgressBar" parent="UI/CanvasLayer" unique_id=636362868 node_paths=PackedStringArray("health_label", "game_over_panel")]
+offset_left = 576.0
+offset_top = 64.0
+offset_right = 1344.0
+offset_bottom = 128.0
+pivot_offset = Vector2(384, 32)
+theme_override_fonts/font = ExtResource("10_o5yvi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rfjv2")
+value = 100.0
+show_percentage = false
+script = ExtResource("12_rku1e")
+health_label = NodePath("HealthLabel")
+game_over_panel = NodePath("../GameOverPanel")
+
+[node name="HealthLabel" type="Label" parent="UI/CanvasLayer/HealthBar" unique_id=1549569416]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35, 11.5)
+theme_override_fonts/font = ExtResource("10_o5yvi")
+theme_override_font_sizes/font_size = 40
+text = "HEALTH: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="UI/CanvasLayer" unique_id=1338766534 node_paths=PackedStringArray("level_label")]
+offset_left = 576.0
+offset_top = 176.0
+offset_right = 1344.0
+offset_bottom = 219.0
+pivot_offset = Vector2(384, 24)
+theme_override_styles/fill = SubResource("StyleBoxFlat_nb51f")
+value = 50.0
+show_percentage = false
+script = ExtResource("13_rfjv2")
+level_label = NodePath("LevelLabel")
+
+[node name="LevelLabel" type="Label" parent="UI/CanvasLayer/LevelBar" unique_id=1051283273]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 12)
+theme_override_fonts/font = ExtResource("10_o5yvi")
+theme_override_font_sizes/font_size = 25
+text = "Level: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="UI/CanvasLayer" unique_id=102187467]
+visible = false
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnt18")
+script = ExtResource("14_1phco")
+
+[node name="GameOverLabel" type="Label" parent="UI/CanvasLayer/GameOverPanel" unique_id=531883027]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -728.0
+offset_top = -284.0
+offset_right = 728.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 70
+theme_override_fonts/font = ExtResource("10_o5yvi")
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="UI/CanvasLayer/GameOverPanel" unique_id=2042578589]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 100.0
+offset_right = 192.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_o5yvi")
+theme_override_font_sizes/font_size = 100
+text = "Menu"
+
+[node name="RandomOne" type="Button" parent="UI/CanvasLayer" unique_id=1823532152]
+z_index = 4
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 448.0
+offset_top = -216.0
+offset_right = 896.0
+offset_bottom = -24.0
+grow_horizontal = 2
+pivot_offset = Vector2(224, 128)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nnt18")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ewbju")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_85qyi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iivbl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7nbq1")
+text = "FIRST RANDOM"
+autowrap_mode = 3
+script = ExtResource("17_85qyi")
+
+[node name="BasicWoodButton" type="Sprite2D" parent="UI/CanvasLayer/RandomOne" unique_id=82294551]
+z_index = -1
+position = Vector2(228.00002, 99.999985)
+scale = Vector2(0.47200003, 0.464)
+texture = ExtResource("17_ewbju")
+
+[node name="Rope" type="Sprite2D" parent="UI/CanvasLayer/RandomOne" unique_id=1767107698]
+z_index = -1
+z_as_relative = false
+position = Vector2(74, -58.999992)
+scale = Vector2(1, 1.54)
+texture = ExtResource("19_iivbl")
+
+[node name="Rope2" type="Sprite2D" parent="UI/CanvasLayer/RandomOne" unique_id=94971635]
+z_index = -1
+z_as_relative = false
+position = Vector2(370, -58.999992)
+scale = Vector2(1, 1.54)
+texture = ExtResource("19_iivbl")
+
+[node name="RandomTwo" type="Button" parent="UI/CanvasLayer" unique_id=411908173]
+z_index = 2
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 448.0
+offset_top = -216.0
+offset_right = 896.0
+offset_bottom = -24.0
+grow_horizontal = 2
+pivot_offset = Vector2(224, 128)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nnt18")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ewbju")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_85qyi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iivbl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7nbq1")
+text = "SECOND RANDOM"
+autowrap_mode = 3
+script = ExtResource("17_85qyi")
+
+[node name="BasicWoodButton" type="Sprite2D" parent="UI/CanvasLayer/RandomTwo" unique_id=923555933]
+z_index = -1
+position = Vector2(228.00002, 99.999985)
+scale = Vector2(0.47200003, 0.464)
+texture = ExtResource("17_ewbju")
+
+[node name="Rope" type="Sprite2D" parent="UI/CanvasLayer/RandomTwo" unique_id=1551706481]
+z_index = -1
+z_as_relative = false
+position = Vector2(74, -58.999992)
+scale = Vector2(1, 1.54)
+texture = ExtResource("19_iivbl")
+
+[node name="Rope2" type="Sprite2D" parent="UI/CanvasLayer/RandomTwo" unique_id=1660617501]
+z_index = -1
+z_as_relative = false
+position = Vector2(370, -58.999992)
+scale = Vector2(1, 1.54)
+texture = ExtResource("19_iivbl")
+
+[node name="RandomThree" type="Button" parent="UI/CanvasLayer" unique_id=425965367]
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 448.0
+offset_top = -216.0
+offset_right = 896.0
+offset_bottom = -24.0
+grow_horizontal = 2
+pivot_offset = Vector2(224, 128)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nnt18")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ewbju")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_85qyi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iivbl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7nbq1")
+text = "THIRD RANDOM"
+autowrap_mode = 3
+script = ExtResource("17_85qyi")
+
+[node name="BasicWoodButton" type="Sprite2D" parent="UI/CanvasLayer/RandomThree" unique_id=2067626967]
+z_index = -1
+position = Vector2(228.00002, 99.999985)
+scale = Vector2(0.47200003, 0.464)
+texture = ExtResource("17_ewbju")
+
+[node name="Rope" type="Sprite2D" parent="UI/CanvasLayer/RandomThree" unique_id=1580859602]
+z_index = -2
+z_as_relative = false
+position = Vector2(74, -58.999992)
+scale = Vector2(1, 1.54)
+texture = ExtResource("19_iivbl")
+
+[node name="Rope2" type="Sprite2D" parent="UI/CanvasLayer/RandomThree" unique_id=1368064629]
+z_index = -2
+z_as_relative = false
+position = Vector2(370, -58.999992)
+scale = Vector2(1, 1.54)
+texture = ExtResource("19_iivbl")
+
+[connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
+[connection signal="area_entered" from="Hawk" to="BulletArea2D" method="_on_hawk_area_entered"]
+[connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]
+[connection signal="mouse_entered" from="UI/CanvasLayer/RandomOne" to="UI/CanvasLayer/RandomOne" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CanvasLayer/RandomOne" to="UI/CanvasLayer/RandomOne" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/CanvasLayer/RandomOne" to="UI/CanvasLayer" method="_on_random_one_pressed"]
+[connection signal="mouse_entered" from="UI/CanvasLayer/RandomTwo" to="UI/CanvasLayer/RandomTwo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CanvasLayer/RandomTwo" to="UI/CanvasLayer/RandomTwo" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/CanvasLayer/RandomTwo" to="UI/CanvasLayer" method="_on_random_two_pressed"]
+[connection signal="mouse_entered" from="UI/CanvasLayer/RandomThree" to="UI/CanvasLayer/RandomThree" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CanvasLayer/RandomThree" to="UI/CanvasLayer/RandomThree" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/CanvasLayer/RandomThree" to="UI/CanvasLayer" method="_on_random_three_pressed"]

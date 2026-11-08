@@ -298,13 +298,15 @@ texture = ExtResource("17_ewbju")
 [node name="Rope" type="Sprite2D" parent="UI/CanvasLayer/RandomOne" unique_id=1767107698]
 z_index = -1
 z_as_relative = false
-position = Vector2(72, -16)
+position = Vector2(74, -58.999992)
+scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [node name="Rope2" type="Sprite2D" parent="UI/CanvasLayer/RandomOne" unique_id=94971635]
 z_index = -1
 z_as_relative = false
-position = Vector2(368, -16)
+position = Vector2(370, -58.999992)
+scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [node name="RandomTwo" type="Button" parent="UI/CanvasLayer" unique_id=411908173]
@@ -338,13 +340,15 @@ texture = ExtResource("17_ewbju")
 [node name="Rope" type="Sprite2D" parent="UI/CanvasLayer/RandomTwo" unique_id=1551706481]
 z_index = -1
 z_as_relative = false
-position = Vector2(72, -16)
+position = Vector2(74, -58.999992)
+scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [node name="Rope2" type="Sprite2D" parent="UI/CanvasLayer/RandomTwo" unique_id=1660617501]
 z_index = -1
 z_as_relative = false
-position = Vector2(368, -16)
+position = Vector2(370, -58.999992)
+scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [node name="RandomThree" type="Button" parent="UI/CanvasLayer" unique_id=425965367]
@@ -377,13 +381,15 @@ texture = ExtResource("17_ewbju")
 [node name="Rope" type="Sprite2D" parent="UI/CanvasLayer/RandomThree" unique_id=1580859602]
 z_index = -2
 z_as_relative = false
-position = Vector2(72, -16)
+position = Vector2(74, -58.999992)
+scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [node name="Rope2" type="Sprite2D" parent="UI/CanvasLayer/RandomThree" unique_id=1368064629]
 z_index = -2
 z_as_relative = false
-position = Vector2(368, -16)
+position = Vector2(370, -58.999992)
+scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
@@ -391,7 +397,10 @@ texture = ExtResource("19_iivbl")
 [connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]
 [connection signal="mouse_entered" from="UI/CanvasLayer/RandomOne" to="UI/CanvasLayer/RandomOne" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CanvasLayer/RandomOne" to="UI/CanvasLayer/RandomOne" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/CanvasLayer/RandomOne" to="UI/CanvasLayer" method="_on_random_one_pressed"]
 [connection signal="mouse_entered" from="UI/CanvasLayer/RandomTwo" to="UI/CanvasLayer/RandomTwo" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CanvasLayer/RandomTwo" to="UI/CanvasLayer/RandomTwo" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/CanvasLayer/RandomTwo" to="UI/CanvasLayer" method="_on_random_two_pressed"]
 [connection signal="mouse_entered" from="UI/CanvasLayer/RandomThree" to="UI/CanvasLayer/RandomThree" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CanvasLayer/RandomThree" to="UI/CanvasLayer/RandomThree" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/CanvasLayer/RandomThree" to="UI/CanvasLayer" method="_on_random_three_pressed"]

@@ -2,6 +2,8 @@ extends Sprite2D
 
 @export var Bullet: PackedScene
 var offsetValue;
+var on_cool_down: bool = false
+var holding_down_left: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,10 +11,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
+	if on_cool_down: return
+	
+	if Input.is_action_pressed("shoot"):
+		print("Holding LEFT")
+		holding_down_left = true
 		shoot()
+	else:
+		holding_down_left = false
 		
 func shoot():
+	if on_cool_down: return
+	
 	#instantiating player
 	var b = Bullet.instantiate()
 	var offsetX = Transform2D()
@@ -27,6 +37,10 @@ func shoot():
 		b.direction = 1
 	bSprite.flip_v = flip_h
 	b.transform = global_transform*offsetX
+	
+	on_cool_down = true
+	await get_tree().create_timer(1/Global.egg_fire_rate).timeout
+	on_cool_down = false
 	
 func _physics_process(delta: float) -> void:
 	#get the mouse position, subtract that from the objects position

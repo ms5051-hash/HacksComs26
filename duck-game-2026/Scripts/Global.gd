@@ -74,9 +74,26 @@ const start_egg_damage: float = 10.0
 const start_enemy_base_hp: float = 100.0
 const start_sticks_per_kill: int = 2
 const start_score_per_kill: int = 10
+const start_egg_fire_rate: int = 1
 
 # FIELDS HERE
+
+# Upgrade stuff here
+const fire_rate_multiplier: float = 2
+const egg_damage_multiplier: float = 1.1
+const nest_max_hp_multiplier: float = 1.1
+const regen_multiplier: float = 1.1
+
+var egg_damage: float = start_egg_damage
+# egg shots per second
+var egg_fire_rate: float = start_egg_fire_rate
+
+var enemy_base_hp: float = start_enemy_base_hp
+var sticks_per_kill: int = start_sticks_per_kill
+var score_per_kill: int = start_score_per_kill
+
 var game_ended: bool = false
+
 #Nest
 var nest_max_hp: float = start_nest_max_hp
 var nest_hp: float = start_nest_max_hp
@@ -107,12 +124,12 @@ var level_xp: float = 0:
 		# then simply increment level and 
 		# set new max
 		# set new current level
-		if value >= level_xp_max:
-			level_xp = level_xp - level_xp_max
+		while value >= level_xp_max:
+			value -= level_xp_max
 			level_xp_max = level_xp_max * level_max_multiplier
 			level += 1
-		else:
-			level_xp = value
+		level_xp = value
+		
 		level_xp_changed.emit(level_xp)
 
 # current level
@@ -127,11 +144,7 @@ var level_xp_max: float = start_level_xp_max:
 		level_xp_max = value
 		level_xp_max_changed.emit(level_xp_max)
 
-# Egg Damage
-var egg_damage: float = start_egg_damage
-var enemy_base_hp: float = start_enemy_base_hp
-var sticks_per_kill: int = start_sticks_per_kill
-var score_per_kill: int = start_score_per_kill
+
 
 # When enemy dies
 func enemy_killed() -> void:
@@ -163,6 +176,7 @@ func reset_everything() -> void:
 	nest_hp = start_nest_max_hp
 	level_xp_max = start_level_xp_max
 	egg_damage = start_egg_damage
+	egg_fire_rate = start_egg_fire_rate
 	enemy_base_hp = start_enemy_base_hp
 	sticks_per_kill = start_sticks_per_kill
 	score_per_kill = start_score_per_kill
