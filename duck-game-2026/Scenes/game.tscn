@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
 [ext_resource type="Script" uid="uid://b1vokjcvwfc45" path="res://Scripts/ScoreBoard.gd" id="10_ldgsr"]
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="10_o5yvi"]
+[ext_resource type="Script" uid="uid://csva0bjxrvw8h" path="res://Scenes/hp.gd" id="12_rku1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 size = Vector2(246, 333)
@@ -97,5 +98,11 @@ theme_override_font_sizes/font_size = 100
 text = "Score: 0"
 script = ExtResource("10_ldgsr")
 score_label = NodePath(".")
+
+[node name="hp" type="Label" parent="UI" unique_id=1549035755]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("12_rku1e")
 
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
