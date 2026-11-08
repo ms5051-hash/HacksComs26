@@ -6,6 +6,17 @@ var predator_type: int = Global.PredatorType.HAWK
 @export var attack_cooldown: float = 1.0
 @export var time_since_attack: float = 0.0
 
+#Movement
+enum State { ENTER, PATROL, DIVE }
+var state = State.ENTER
+@export var patrol_speed = 200.0
+@export var patrol_range = 400.0
+@export var sweeps_before_dive = randi_range(2, 6)
+var patrol_dir = 1
+var patrol_start_x = 960
+var sweeps_done = 0
+
+
 var maxHP = 10.0
 var hp = maxHP
 
@@ -14,7 +25,6 @@ func _ready() -> void:
 	speed = Global.get_predator_stat(predator_type, "speed")
 	$Sprite2D.play("Hawk")
 	area_entered.connect(_on_area_entered)
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,7 +32,13 @@ func _process(delta: float) -> void:
 	$ProgressBar.value = hp
 	$ProgressBar/Label.text = str(int(hp))
 	
-	position+=(player.global_position-global_position).normalized()*speed*delta
+	match state:
+		State.ENTER:
+			_enter(delta)
+		State.PATROL:
+			_patrol(delta)
+		State.DIVE:
+			_dive(delta)
 	
 	if(position.x < 960):
 		$Sprite2D.flip_h = true
@@ -39,3 +55,25 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if(area.name=="PlayerArea2D"):
 		speed = 0
+		
+
+func _patrol(delta: float) -> void:
+	global_position.x += patrol_dir * patrol_speed * delta
+
+	# Turn around at either end of the patrol range
+	if abs(global_position.x - patrol_start_x) >= patrol_range:
+		patrol_dir *= -1
+		sweeps_done += 1
+
+		if sweeps_done >= sweeps_before_dive:
+			state = State.DIVE
+
+func _dive(delta: float) -> void:
+	global_position += (player.global_position - global_position).normalized() * speed * delta
+
+func _enter(delta: float) -> void:
+	var abovePos = player.global_position
+	abovePos.y -= 400
+	global_position += (abovePos - global_position).normalized() * speed * delta
+	if(global_position == abovePos):
+		state = State.PATROL

@@ -35,6 +35,8 @@ func Spawn():
 	enemySpawn.global_position.y = yValue
 	enemySpawn.z_index+=yValue/10
 	add_child(enemySpawn)
+	
+	$"..".play_sfx(preload("res://Assets/Sounds/FoxMove.wav"))
 
 func SpawnHawk():
 	var rng = RandomNumberGenerator	.new()
@@ -48,3 +50,5 @@ func SpawnHawk():
 	enemySpawn.global_position.y = yValue
 	enemySpawn.z_index+=yValue/10
 	add_child(enemySpawn)
+	
+	$"..".play_sfx(preload("res://Assets/Sounds/CawCaw.wav"))
