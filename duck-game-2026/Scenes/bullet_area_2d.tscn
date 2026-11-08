@@ -11,7 +11,7 @@ visible = false
 script = ExtResource("1_eiu4d")
 
 [node name="BulletSprite2D" type="Sprite2D" parent="." unique_id=2090375803]
-z_index = 100
+z_index = 4096
 z_as_relative = false
 rotation = -1.5707964
 scale = Vector2(4, 4)

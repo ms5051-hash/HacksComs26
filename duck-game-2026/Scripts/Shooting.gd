@@ -41,9 +41,6 @@ func _on_area_entered(area: Area2D) -> void:
 			reparent(area, true)
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
-		
-		Global.score += 1
-		Global.level_xp += 1
 
 
 func _on_hawk_area_entered(area):

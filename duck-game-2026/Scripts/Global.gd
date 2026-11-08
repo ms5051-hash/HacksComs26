@@ -1,6 +1,5 @@
 extends Node
 
-const level_max_multiplier: float = 1.1
 signal sticks_changed(amount: int)
 signal nest_hp_changed(current: float,maximum: float)
 signal wave_changed(wave: int)
@@ -49,9 +48,9 @@ func is_playing() -> bool:
 
 #Predator stats and functions during the game
 var predator_stats: Dictionary = {
-	PredatorType.FOX:  {"hp": 30.0, "speed": 200, "nest_damage": 3.0, "sticks": 2, "score": 10, "flying": false},
-	PredatorType.HAWK: {"hp": 20.0, "speed": 70.0, "nest_damage": 2.0, "sticks": 3, "score": 15, "flying": true},
-	PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 25, "flying": false},
+	PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
+	PredatorType.HAWK: {"hp": 20.0, "speed": 150, "nest_damage": 2.0, "sticks": 3, "score": 2, "flying": true},
+	PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 3, "flying": false},
 }
 
 func get_predator_stat(type: int, stat: String):
@@ -69,20 +68,21 @@ func predator_hit_nest(type: int) -> void:
 	
 # FIELD START VALUES HERE
 const start_nest_max_hp: float = 100.0
-const start_level_xp_max: float = 10.0
-const start_egg_damage: float = 10.0
+const start_level_xp_max: float = 2.0
+const start_egg_damage: float = 1.0
 const start_enemy_base_hp: float = 100.0
 const start_sticks_per_kill: int = 2
 const start_score_per_kill: int = 10
 const start_egg_fire_rate: int = 1
 # 2 health every second
-const start_regen: float = 2
+const start_regen: float = 2.0
+const level_max_multiplier: float = 1.25
 
 # FIELDS HERE
 
 # Upgrade stuff here
-const fire_rate_multiplier: float = 2
-const egg_damage_multiplier: float = 1.1
+const fire_rate_multiplier: float = 1.25
+const egg_damage_multiplier: float = 1.5
 const nest_max_hp_multiplier: float = 1.1
 const regen_multiplier: float = 1.1
 

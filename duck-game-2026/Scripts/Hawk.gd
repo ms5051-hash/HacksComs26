@@ -29,6 +29,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(hp <= 0):
+		Global.score += Global.predator_stats[predator_type]["score"]
+		Global.level_xp += Global.predator_stats[predator_type]["score"]
 		queue_free()
 	
 	$ProgressBar.max_value = maxHP
