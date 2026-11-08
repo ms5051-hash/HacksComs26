@@ -6,6 +6,9 @@ var predator_type: int = Global.PredatorType.FOX
 @export var attack_cooldown: float = 1.0
 @export var time_since_attack: float = 0.0
 
+var maxHP = 10.0
+var hp = maxHP
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	speed = Global.get_predator_stat(predator_type, "speed")
@@ -15,6 +18,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$ProgressBar.max_value = maxHP
+	$ProgressBar.value = hp
+	$ProgressBar/Label.text = str(int(hp))
+	
 	var y = position.y;
 	position+=(player.global_position-global_position).normalized()*speed*delta
 	position.y = y;
