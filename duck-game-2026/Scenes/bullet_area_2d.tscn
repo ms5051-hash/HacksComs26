@@ -7,11 +7,13 @@
 radius = 40.311287
 
 [node name="BulletArea2D" type="Area2D" unique_id=1332803089]
+visible = false
 script = ExtResource("1_eiu4d")
 
 [node name="BulletSprite2D" type="Sprite2D" parent="." unique_id=2090375803]
+z_index = 1
 rotation = -1.5830137
-scale = Vector2(5, 6)
+scale = Vector2(4, 4)
 texture = ExtResource("1_o8x0p")
 
 [node name="BulletCollisionShape2D" type="CollisionShape2D" parent="." unique_id=259236577]

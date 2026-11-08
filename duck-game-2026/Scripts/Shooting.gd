@@ -5,10 +5,18 @@ var speed = 3000
 var direction = 1
 @export var scoreboard: Label
 @export var player: Sprite2D
+
+var first
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
+	first = true
 	
 func _physics_process(delta: float) -> void:
+	if(first):
+		position+=transform.x*speed*delta*direction*6
+		visible = true
+		first = false
 	position+=transform.x*speed*delta*direction
 	
 

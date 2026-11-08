@@ -33,7 +33,6 @@ bg_color = Color(0.526635, 0.47309998, 0.83, 1)
 script = ExtResource("1_nb51f")
 
 [node name="BulletArea2D" parent="." unique_id=1332803089 node_paths=PackedStringArray("player") instance=ExtResource("1_wrm1d")]
-visible = false
 rotation = -4.710644
 scale = Vector2(10.88, 10)
 player = NodePath("../PlayerArea2D/PlayerSprite2D")
@@ -44,7 +43,7 @@ position = Vector2(953, 754)
 [node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
 z_index = 1
 position = Vector2(-1, 50)
-scale = Vector2(0.1, 0.15)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_h4fw4")
 script = ExtResource("2_wrm1d")
 Bullet = ExtResource("1_wrm1d")
@@ -59,8 +58,8 @@ scale = Vector2(0.39999515, 0.39999878)
 texture = ExtResource("4_3dryh")
 
 [node name="Feet" type="Sprite2D" parent="PlayerArea2D" unique_id=871130237]
-position = Vector2(0, 54)
-scale = Vector2(0.15, 0.1)
+position = Vector2(0, 56)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ldgsr")
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1191588194 node_paths=PackedStringArray("spawnPoints", "player")]
@@ -91,9 +90,13 @@ visible = false
 player = NodePath("../PlayerArea2D")
 
 [node name="Grass" type="Node2D" parent="." unique_id=1617349816]
+z_index = 1000
+z_as_relative = false
 position = Vector2(959, 540)
 
 [node name="Sprite2D" type="Sprite2D" parent="Grass" unique_id=1176823992]
+z_index = 1000
+z_as_relative = false
 texture = ExtResource("7_v158k")
 
 [node name="Background" type="Node2D" parent="." unique_id=441702575]
@@ -112,15 +115,23 @@ offset_right = 1922.0
 offset_bottom = 1080.0
 
 [node name="XPLabel" type="Label" parent="UI" unique_id=1988153872 node_paths=PackedStringArray("score_label")]
-layout_mode = 0
-offset_left = 73.0
-offset_top = 97.0
-offset_right = 893.0
-offset_bottom = 210.0
-theme_override_colors/font_color = Color(0.86257684, 0.13699493, 0.99999994, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -410.0
+offset_top = 256.0
+offset_right = 410.0
+offset_bottom = 369.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99926454, 0.9119006, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.28627452)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("10_o5yvi")
 theme_override_font_sizes/font_size = 100
-text = "XP: 0"
+text = "0"
+horizontal_alignment = 1
 script = ExtResource("10_ldgsr")
 score_label = NodePath(".")
 
