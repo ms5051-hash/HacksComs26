@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dl215066b8sx1" path="res://Fonts/Matcha World.ttf" id="2_hewda"]
 [ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="2_ly6xb"]
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="3_m8nr8"]
+[ext_resource type="PackedScene" uid="uid://c7fkcdahblr1h" path="res://Scenes/visual_egg.tscn" id="3_mhr8t"]
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="4_47rga"]
 [ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="6_w1dup"]
 [ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="6_yyxd1"]
@@ -39,8 +40,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1dup"]
 bg_color = Color(0.6625, 0.75, 0, 1)
 
-[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("title", "leaderboard_panel", "credits_panel", "menu_buttons")]
+[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("canvas", "title", "leaderboard_panel", "credits_panel", "menu_buttons")]
 script = ExtResource("1_2c717")
+canvas = NodePath("CanvasLayer")
 title = NodePath("CanvasLayer/Control/Panel/Title")
 leaderboard_panel = NodePath("CanvasLayer/Control/LeaderboardPanel")
 credits_panel = NodePath("CanvasLayer/Control/CreditsPanel")
@@ -48,6 +50,7 @@ leaderboard_duration = 1.5
 menu_buttons = [NodePath("CanvasLayer/Control/Panel/PlayButton"), NodePath("CanvasLayer/Control/Panel/LeaderBoardButton"), NodePath("CanvasLayer/Control/Panel/CreditsButton"), NodePath("CanvasLayer/Control/Panel/ExitButton")]
 amount_of_scores = 10
 score_label_prefab = ExtResource("7_uvydw")
+egg_prefab = ExtResource("3_mhr8t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=418878514]
 
@@ -213,40 +216,43 @@ rotation = -3.1415925
 scale = Vector2(0.19654372, -0.17161952)
 texture = ExtResource("4_47rga")
 
-[node name="Rope" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=888072439]
+[node name="Ropes" type="Node" parent="CanvasLayer/Control/Panel" unique_id=1090550568]
+
+[node name="Rope" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=888072439]
 z_index = -2
 position = Vector2(824, 663.5)
 scale = Vector2(0.5, 0.80999935)
 texture = ExtResource("6_w1dup")
 
-[node name="Rope2" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=1337175937]
+[node name="Rope2" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=1337175937]
 z_index = -2
 position = Vector2(1096, 664)
 rotation = -0.1953874
 scale = Vector2(0.5, 0.80999935)
 texture = ExtResource("6_w1dup")
 
-[node name="Rope3" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=1018288992]
+[node name="Rope3" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=1018288992]
 z_index = -2
 position = Vector2(888, 784)
 rotation = -0.16158192
 scale = Vector2(0.5, 0.80999935)
 texture = ExtResource("6_w1dup")
 
-[node name="Rope4" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=664813082]
+[node name="Rope4" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=664813082]
 z_index = -2
 position = Vector2(1048, 776)
 rotation = -0.01208266
-scale = Vector2(0.5, 0.80999935)
+scale = Vector2(0.49999997, 0.80999935)
 texture = ExtResource("6_w1dup")
 
-[node name="Rope5" type="Sprite2D" parent="CanvasLayer/Control/Panel" unique_id=430430914]
+[node name="Rope5" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=430430914]
 z_index = -2
 position = Vector2(936, 904.00006)
 scale = Vector2(0.5, 0.80999935)
 texture = ExtResource("6_w1dup")
 
 [node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -292,6 +298,7 @@ grow_vertical = 2
 pivot_offset = Vector2(384, 284)
 
 [node name="CreditsPanel" type="Panel" parent="CanvasLayer/Control" unique_id=1177735752]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
