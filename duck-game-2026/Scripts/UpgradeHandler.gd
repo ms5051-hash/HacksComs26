@@ -18,6 +18,7 @@ var upgrade_snippets = {
 var num_of_times_upgraded: int = 0
 var is_tweening: bool = false
 var button_upgrade_array: Array[Upgrades]
+var is_choosing: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,7 +28,8 @@ func _ready() -> void:
 
 func _on_level_changed(new_level) -> void:
 	# for now just try tweening it down here
-	if new_level == 0: return
+	if is_choosing or new_level == 0: return
+	
 	await _tween_down()
 	pass
 	
@@ -40,6 +42,7 @@ func _make_buttons_interactable(interactable: bool) -> void:
 	pass
 	
 func _tween_down() -> void:
+	is_choosing = true
 	# Generate random upgrades
 	var number_array: Array[int]
 	number_array.resize(Upgrades.size())
@@ -107,6 +110,7 @@ func _tween_up() -> void:
 	
 	await tween_three.finished
 	is_tweening = false
+	is_choosing = false
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

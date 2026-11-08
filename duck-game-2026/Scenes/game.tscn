@@ -397,11 +397,11 @@ position = Vector2(370, -58.999992)
 scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
-[connection signal="timeout" from="PlayerArea2D/Timer" to="PlayerArea2D/PlayerSprite2D" method="_on_timer_timeout"]
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1757720021]
 stream = ExtResource("21_exi56")
 volume_db = 10.0
 
+[connection signal="timeout" from="PlayerArea2D/Timer" to="PlayerArea2D/PlayerSprite2D" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
 [connection signal="area_entered" from="Hawk" to="BulletArea2D" method="_on_hawk_area_entered"]
 [connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]
