@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5r56sm06r63p" path="res://Assets/Tower.png" id="4_3dryh"]
 [ext_resource type="Texture2D" uid="uid://tpeuj6jcbn06" path="res://Assets/DuckFeet.png" id="5_ldgsr"]
 [ext_resource type="Script" uid="uid://c6gps3v3gtknn" path="res://Scripts/enemy_spawner.gd" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://dj467x4eo72on" path="res://Scenes/enemy.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://bboxla60jsyjl" path="res://Scenes/enemy.tscn" id="6_i6g32"]
 [ext_resource type="Texture2D" uid="uid://d1lt7s0rsxdj3" path="res://Assets/Grass.png" id="7_v158k"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
 
