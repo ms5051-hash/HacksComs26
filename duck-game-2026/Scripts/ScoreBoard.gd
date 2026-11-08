@@ -17,7 +17,7 @@ func _on_score_changed(new_score: int) -> void:
 	_update_label()
 	
 func _update_label() -> void:
-	score_label.text = "Score: " + str(displayed_score)
+	score_label.text = str(displayed_score)
 
 # small bounce each time you score
 func _pop() -> void:
