@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="6_yyxd1"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="7_0vbqt"]
 [ext_resource type="PackedScene" uid="uid://c2etg8bol55qh" path="res://Scenes/score_label.tscn" id="7_uvydw"]
+[ext_resource type="Texture2D" uid="uid://ywae64x00rbs" path="res://Assets/RopeRipped.png" id="10_oy1pr"]
 [ext_resource type="StyleBox" uid="uid://b4b8404t5inxc" path="res://Styles/StyleBoxFlatBasic.tres" id="10_so5kr"]
 [ext_resource type="FontFile" uid="uid://bh251ho7eey2a" path="res://Fonts/Sunny Spells.ttf" id="11_0bgj2"]
 [ext_resource type="AudioStream" uid="uid://cpm7tcgl1hyf7" path="res://Assets/Sounds/EggCrackGoosh.wav" id="12_w8a2l"]
+[ext_resource type="Texture2D" uid="uid://4upkc5467x8y" path="res://Assets/Duck.png" id="14_uu6ay"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
 
@@ -254,6 +256,19 @@ position = Vector2(936, 904.00006)
 scale = Vector2(0.5, 0.80999935)
 texture = ExtResource("6_w1dup")
 
+[node name="Rope6" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=204390368]
+z_index = -2
+position = Vector2(1063, 904.00006)
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("10_oy1pr")
+
+[node name="Rope7" type="Sprite2D" parent="CanvasLayer/Control/Panel/Ropes" unique_id=978395308]
+z_index = -2
+position = Vector2(1055, 970.00006)
+rotation = -2.3898714
+scale = Vector2(0.5, 0.80999935)
+texture = ExtResource("10_oy1pr")
+
 [node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]
 z_index = 1
 layout_mode = 1
@@ -386,6 +401,11 @@ visible = false
 position = Vector2(960, 539.99994)
 scale = Vector2(15, 8.437501)
 texture = ExtResource("6_yyxd1")
+
+[node name="Duck" type="Sprite2D" parent="CanvasLayer/Control/CreditsPanel" unique_id=69500800]
+position = Vector2(1908, 531)
+scale = Vector2(0.93965876, 0.93965876)
+texture = ExtResource("14_uu6ay")
 
 [node name="Sky" type="Sprite2D" parent="." unique_id=951986576]
 position = Vector2(960, 544)
