@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bgaq537fwgryv"]
+
+[ext_resource type="Script" uid="uid://duvekrt5tkcls" path="res://Scripts/Hawk.gd" id="1_v6gr3"]
+[ext_resource type="Texture2D" uid="uid://b3enhw6purtgs" path="res://Assets/Hawk1.png" id="2_5rcmg"]
+[ext_resource type="Texture2D" uid="uid://daco6eemw7878" path="res://Assets/Fox1.png" id="2_imrqw"]
+[ext_resource type="Texture2D" uid="uid://d3bgfwu8vop3h" path="res://Assets/Hawk2.png" id="3_akegv"]
+[ext_resource type="Texture2D" uid="uid://dy26a7ecmw4su" path="res://Assets/Fox2.png" id="3_v6gr3"]
+[ext_resource type="Texture2D" uid="uid://dh4b3dlt0rmbr" path="res://Assets/Fox3.png" id="4_jknxg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfxxt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_imrqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v6gr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jknxg")
+}],
+"loop": 1,
+"name": &"Fox",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5rcmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_akegv")
+}],
+"loop": 1,
+"name": &"Hawk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7si6p"]
+size = Vector2(144, 136)
+
+[node name="enemyArea2D" type="Area2D" unique_id=638344407]
+script = ExtResource("1_v6gr3")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=770813398]
+scale = Vector2(0.24722221, 0.24722221)
+sprite_frames = SubResource("SpriteFrames_yfxxt")
+animation = &"Hawk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=546232621]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_7si6p")

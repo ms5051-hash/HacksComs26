@@ -25,8 +25,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7si6p"]
 size = Vector2(144, 136)
 
-[node name="enemyArea2D" type="Area2D" unique_id=638344407]
+[node name="enemyArea2D" type="Area2D" unique_id=638344407 node_paths=PackedStringArray("player")]
 script = ExtResource("1_jb3vm")
+player = NodePath(".")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=770813398]
 scale = Vector2(0.24722221, 0.24722221)

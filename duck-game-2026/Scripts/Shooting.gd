@@ -12,9 +12,6 @@ func _physics_process(delta: float) -> void:
 	position+=transform.x*speed*delta*direction
 	
 
-func _on_enemy_area_entered(area: Area2D) -> void:
-	pass
-
 
 func _on_area_entered(area: Area2D) -> void:
 	print("Hi")
@@ -22,3 +19,7 @@ func _on_area_entered(area: Area2D) -> void:
 		area.queue_free()
 		queue_free()
 		Global.score += 1
+
+
+func _on_hawk_area_entered(area):
+	pass # Replace with function body.

@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://c6gps3v3gtknn" path="res://Scripts/enemy_spawner.gd" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bboxla60jsyjl" path="res://Scenes/enemy.tscn" id="6_i6g32"]
 [ext_resource type="Texture2D" uid="uid://d1lt7s0rsxdj3" path="res://Assets/Grass.png" id="7_v158k"]
+[ext_resource type="PackedScene" uid="uid://bgaq537fwgryv" path="res://Scenes/hawk.tscn" id="8_1phco"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://duvekrt5tkcls" path="res://Scripts/Hawk.gd" id="9_nb51f"]
 [ext_resource type="Script" uid="uid://b1vokjcvwfc45" path="res://Scripts/ScoreBoard.gd" id="10_ldgsr"]
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="10_o5yvi"]
 [ext_resource type="Script" uid="uid://doivtfckqllut" path="res://Scenes/progress_bar.gd" id="13_rfjv2"]
@@ -52,7 +54,8 @@ texture = ExtResource("5_ldgsr")
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1191588194 node_paths=PackedStringArray("spawnPoints", "player")]
 script = ExtResource("5_wowpa")
 enemy = ExtResource("6_i6g32")
-spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight")]
+hawk = ExtResource("8_1phco")
+spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight"), NodePath("SpawnPointLeft2"), NodePath("SpawnPointRight2")]
 player = NodePath("../PlayerArea2D")
 
 [node name="SpawnPointLeft" type="Node2D" parent="EnemySpawner" unique_id=1896892598]
@@ -61,8 +64,19 @@ position = Vector2(0, 1000)
 [node name="SpawnPointRight" type="Node2D" parent="EnemySpawner" unique_id=708173840]
 position = Vector2(1920, 1000)
 
+[node name="SpawnPointLeft2" type="Node2D" parent="EnemySpawner" unique_id=320921292]
+position = Vector2(0, 200)
+
+[node name="SpawnPointRight2" type="Node2D" parent="EnemySpawner" unique_id=2067627256]
+position = Vector2(1920, 200)
+
 [node name="Enemy" parent="." unique_id=638344407 node_paths=PackedStringArray("player") instance=ExtResource("6_i6g32")]
 visible = false
+player = NodePath("../PlayerArea2D")
+
+[node name="Hawk" parent="." unique_id=392546175 node_paths=PackedStringArray("player") instance=ExtResource("8_1phco")]
+visible = false
+script = ExtResource("9_nb51f")
 player = NodePath("../PlayerArea2D")
 
 [node name="Grass" type="Node2D" parent="." unique_id=1617349816]
@@ -109,3 +123,4 @@ offset_bottom = 310.0
 script = ExtResource("13_rfjv2")
 
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
+[connection signal="area_entered" from="Hawk" to="BulletArea2D" method="_on_hawk_area_entered"]
