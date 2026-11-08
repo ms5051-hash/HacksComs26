@@ -54,7 +54,7 @@ func _tween_down() -> void:
 	number_array.shuffle()
 	
 	# get the first three and those are the buttons
-	button_upgrade_array[0] = 4
+	button_upgrade_array[0] = number_array[0]
 	button_upgrade_array[1] = number_array[1]
 	button_upgrade_array[2] = number_array[2]
 	

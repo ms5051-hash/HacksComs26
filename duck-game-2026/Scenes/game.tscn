@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="17_ewbju"]
 [ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="19_iivbl"]
 [ext_resource type="AudioStream" uid="uid://c4vaw8h1gund1" path="res://Assets/Sounds/Pop.wav" id="21_exi56"]
-[ext_resource type="PackedScene" uid="uid://cc4d2030ws81m" path="res://Scenes/snake.tscn" id="22_7t8sx"]
 [ext_resource type="AudioStream" uid="uid://bh03jpxd46ykt" path="res://Assets/Sounds/rison8-identity-and-crisis-129962.mp3" id="22_7t8sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
@@ -88,7 +87,6 @@ autostart = true
 script = ExtResource("5_wowpa")
 enemy = ExtResource("6_i6g32")
 hawk = ExtResource("8_1phco")
-snake = ExtResource("22_7t8sx")
 spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight"), NodePath("SpawnPointLeft2"), NodePath("SpawnPointRight2")]
 player = NodePath("../PlayerArea2D")
 
