@@ -24,8 +24,12 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	#print("Hi")
 	if(area.is_in_group("enemies")):
-		area.queue_free()
+		area.hp = area.hp - 1
+		
 		queue_free()
+		if(area.hp <= 0):
+			area.queue_free()
+		
 		Global.score += 1
 		Global.level_xp += 1
 

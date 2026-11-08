@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://daco6eemw7878" path="res://Assets/Fox1.png" id="2_66wql"]
 [ext_resource type="Texture2D" uid="uid://dy26a7ecmw4su" path="res://Assets/Fox2.png" id="3_bc6eb"]
 [ext_resource type="Texture2D" uid="uid://dh4b3dlt0rmbr" path="res://Assets/Fox3.png" id="4_gdhrw"]
+[ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="5_0830c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yfxxt"]
 animations = [{
@@ -25,6 +26,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7si6p"]
 size = Vector2(144, 136)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0830c"]
+bg_color = Color(0.99931496, 2.8397144e-06, 7.70092e-07, 1)
+
 [node name="enemyArea2D" type="Area2D" unique_id=638344407]
 script = ExtResource("1_jb3vm")
 
@@ -37,3 +41,25 @@ frame_progress = 0.3246101
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=546232621]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_7si6p")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2111535783]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -115.0
+offset_right = 75.0
+offset_bottom = -85.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_styles/fill = SubResource("StyleBoxFlat_0830c")
+
+[node name="Label" type="Label" parent="ProgressBar" unique_id=1610878354]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 4.0
+offset_right = 95.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("5_0830c")
+text = "0"
+horizontal_alignment = 1
