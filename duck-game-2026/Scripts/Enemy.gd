@@ -18,6 +18,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(hp <= 0):
+		queue_free()
+	
 	$ProgressBar.max_value = maxHP
 	$ProgressBar.value = hp
 	$ProgressBar/Label.text = str(int(hp))

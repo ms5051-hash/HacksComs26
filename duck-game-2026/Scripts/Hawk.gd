@@ -28,6 +28,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(hp <= 0):
+		queue_free()
+	
 	$ProgressBar.max_value = maxHP
 	$ProgressBar.value = hp
 	$ProgressBar/Label.text = str(int(hp))
@@ -75,5 +78,5 @@ func _enter(delta: float) -> void:
 	var abovePos = player.global_position
 	abovePos.y -= 400
 	global_position += (abovePos - global_position).normalized() * speed * delta
-	if(global_position == abovePos):
+	if(global_position.x < abovePos.x + 10 && global_position.x > abovePos.x - 10):
 		state = State.PATROL

@@ -23,9 +23,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if($BulletSprite2D.texture == preload("res://Assets/EggSplat.png")):
+		return
+	
 	#print("Hi")
 	if(area.is_in_group("enemies")):
-		area.hp = area.hp - 1
+		area.hp = area.hp - Global.egg_damage
 		$BulletSprite2D.texture = preload("res://Assets/EggSplat.png")
 		if($BulletSprite2D.rotation_degrees == -90):
 			if(position.x > 960):
@@ -34,10 +37,10 @@ func _on_area_entered(area: Area2D) -> void:
 				$BulletSprite2D.rotation_degrees = 180
 		await get_tree().create_timer(.05).timeout
 		speed = 0
+		if(area != null):
+			reparent(area, true)
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
-		if(area.hp <= 0):
-			area.queue_free()
 		
 		Global.score += 1
 		Global.level_xp += 1

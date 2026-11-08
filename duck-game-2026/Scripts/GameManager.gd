@@ -13,6 +13,6 @@ func _ready() -> void:
 func play_sfx(stream: AudioStream) -> void:
 	var p = AudioStreamPlayer.new()
 	p.stream = stream
-	add_child(p)
+	p.autoplay = true
 	p.finished.connect(p.queue_free)
-	p.play()
+	add_child.call_deferred(p)
