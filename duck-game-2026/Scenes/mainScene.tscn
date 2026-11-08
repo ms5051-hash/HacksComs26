@@ -35,10 +35,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu6ay"]
 
-[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("title", "leaderboard_panel", "credits_panel", "menu_buttons")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1dup"]
+bg_color = Color(0.6625, 0.75, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("title", "leaderboard_panel", "leaderboard_places", "credits_panel", "menu_buttons")]
 script = ExtResource("1_2c717")
 title = NodePath("CanvasLayer/Control/Panel/Title")
 leaderboard_panel = NodePath("CanvasLayer/Control/LeaderboardPanel")
+leaderboard_places = [NodePath("CanvasLayer/Control/LeaderboardPanel/VBoxContainer/Label"), NodePath("CanvasLayer/Control/LeaderboardPanel/VBoxContainer/Label2"), NodePath("CanvasLayer/Control/LeaderboardPanel/VBoxContainer/Label3")]
 credits_panel = NodePath("CanvasLayer/Control/CreditsPanel")
 leaderboard_duration = 1.5
 menu_buttons = [NodePath("CanvasLayer/Control/Panel/PlayButton"), NodePath("CanvasLayer/Control/Panel/LeaderBoardButton"), NodePath("CanvasLayer/Control/Panel/CreditsButton"), NodePath("CanvasLayer/Control/Panel/ExitButton")]
@@ -116,9 +120,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -207.99994
+offset_left = -245.5
 offset_top = 148.0
-offset_right = 216.0
+offset_right = 253.5
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -245,24 +249,64 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1080.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1dup")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1581982329]
+[node name="LeaderboardTitle" type="Label" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1581982329]
 z_index = 1
-layout_mode = 0
-offset_right = 1912.0
-offset_bottom = 1080.0
-theme_override_font_sizes/font_size = 50
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 208.0
+offset_right = 598.0
+offset_bottom = 527.0
+grow_horizontal = 2
+pivot_offset = Vector2(600, 176)
+theme_override_fonts/font = ExtResource("2_hewda")
+theme_override_font_sizes/font_size = 150
 text = "LEADERBOARD
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Icon" type="Sprite2D" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1985461368]
-position = Vector2(960, 539.99994)
-scale = Vector2(15, 8.437501)
-texture = ExtResource("6_yyxd1")
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1302670674]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -84.0
+offset_right = 384.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(384, 284)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeaderboardPanel/VBoxContainer" unique_id=138813686]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m8nr8")
+theme_override_font_sizes/font_size = 50
+text = "1) 1000"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/LeaderboardPanel/VBoxContainer" unique_id=1906203022]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m8nr8")
+theme_override_font_sizes/font_size = 50
+text = "2) 1000"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/LeaderboardPanel/VBoxContainer" unique_id=1770769454]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_m8nr8")
+theme_override_font_sizes/font_size = 50
+text = "3) 1000"
+horizontal_alignment = 1
 
 [node name="CreditsPanel" type="Panel" parent="CanvasLayer/Control" unique_id=1177735752]
 layout_mode = 1

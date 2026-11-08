@@ -6,7 +6,7 @@ signal made_top_three(rank: int)
 const SAVE_PATH := "user://leaderboard.save"
 const TOP_COUNT := 3
 
-var all_scores: Array= []
+var all_scores: Array = []
 var last_score: int = 0
 var last_rank: int = 0
 
@@ -48,6 +48,7 @@ func get_top_scores() -> Array:
 func get_best_score() -> int:
 	var top := get_top_scores()
 	return top[0] if not top.is_empty() else 0
+	
 func get_last_score() -> int:
 	return last_score
 
