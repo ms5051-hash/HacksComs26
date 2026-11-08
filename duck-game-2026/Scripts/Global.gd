@@ -116,7 +116,7 @@ func damage_nest(amount: float) -> void:
 # Function that when you lose brings you to the GameOver Scene
 # Func _ready() -> void
 #     Globals.nest_destoryed.connect(on_nest_destroyed)
-# func on_nest_destroyed() -> void:
+#func on_nest_destroyed() -> void:
 #     get_tree().change_scene_to_file("res://GameOver.tscn")
 	
 
