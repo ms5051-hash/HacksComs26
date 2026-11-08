@@ -81,7 +81,7 @@ const start_sticks_per_kill: int = 2
 const start_score_per_kill: int = 10
 const start_egg_fire_rate: int = 1
 # 2 health every second
-const start_regen: float = 2.0
+const start_regen: float = 5.0
 const level_max_multiplier: float = 1.25
 const start_split_shot: int = 1
 

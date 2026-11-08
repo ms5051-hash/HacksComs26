@@ -52,6 +52,7 @@ audioPlayer = NodePath("AudioPlayer")
 backgroundAudioPlayer = NodePath("AudioPlayer2")
 
 [node name="BulletArea2D" parent="." unique_id=1332803089 node_paths=PackedStringArray("player") instance=ExtResource("1_wrm1d")]
+visible = false
 rotation = -4.710644
 scale = Vector2(10.88, 10)
 player = NodePath("../PlayerArea2D/PlayerSprite2D")
