@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="17_ewbju"]
 [ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="19_iivbl"]
 [ext_resource type="AudioStream" uid="uid://c4vaw8h1gund1" path="res://Assets/Sounds/Pop.wav" id="21_exi56"]
+[ext_resource type="AudioStream" uid="uid://bh03jpxd46ykt" path="res://Assets/Sounds/rison8-identity-and-crisis-129962.mp3" id="22_7t8sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 size = Vector2(246, 333)
@@ -44,9 +45,10 @@ bg_color = Color(0.88780314, 0.4148887, 0.4073061, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nbq1"]
 
-[node name="Game" type="Node2D" unique_id=1315213113 node_paths=PackedStringArray("audioPlayer")]
+[node name="Game" type="Node2D" unique_id=1315213113 node_paths=PackedStringArray("audioPlayer", "backgroundAudioPlayer")]
 script = ExtResource("1_nb51f")
 audioPlayer = NodePath("AudioPlayer")
+backgroundAudioPlayer = NodePath("AudioPlayer2")
 
 [node name="BulletArea2D" parent="." unique_id=1332803089 node_paths=PackedStringArray("player") instance=ExtResource("1_wrm1d")]
 rotation = -4.710644
@@ -399,6 +401,10 @@ texture = ExtResource("19_iivbl")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1757720021]
 stream = ExtResource("21_exi56")
+volume_db = 10.0
+
+[node name="AudioPlayer2" type="AudioStreamPlayer2D" parent="." unique_id=723778210]
+stream = ExtResource("22_7t8sx")
 volume_db = 10.0
 
 [connection signal="timeout" from="PlayerArea2D/Timer" to="PlayerArea2D/PlayerSprite2D" method="_on_timer_timeout"]
