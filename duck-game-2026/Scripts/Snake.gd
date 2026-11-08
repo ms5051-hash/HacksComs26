@@ -3,7 +3,7 @@ extends Area2D
 @export var player: Area2D
 var speed: float
 var predator_type: int = Global.PredatorType.SNAKE
-@export var attack_cooldown: float = 5.0
+@export var attack_cooldown: float = 1.0
 @export var time_since_attack: float = 0.0
 
 var maxHP = Global.predator_stats[predator_type]["hp"]

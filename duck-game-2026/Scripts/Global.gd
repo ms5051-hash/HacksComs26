@@ -47,10 +47,16 @@ func is_playing() -> bool:
 		
 
 #Predator stats and functions during the game
+#var predator_stats: Dictionary = {
+	#PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
+	#PredatorType.HAWK: {"hp": 60.0, "speed": 300, "nest_damage": 3.0, "sticks": 3, "score": 2, "flying": true},
+	#PredatorType.SNAKE: {"hp": 300.0, "speed": 100.0, "nest_damage": 20.0, "sticks": 5, "score": 3, "flying": false},
+#}
+
 var predator_stats: Dictionary = {
 	PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
 	PredatorType.HAWK: {"hp": 20.0, "speed": 150, "nest_damage": 2.0, "sticks": 3, "score": 2, "flying": true},
-	PredatorType.SNAKE: {"hp": 50.0, "speed": 35.0, "nest_damage": 10, "sticks": 5, "score": 3, "flying": false},
+	PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 3, "flying": false},
 }
 
 func get_predator_stat(type: int, stat: String):
@@ -100,10 +106,15 @@ var score_per_kill: int = start_score_per_kill
 var game_ended: bool = false
 
 #Nest
+#var nest_max_hp: float = start_nest_max_hp
+#var nest_hp: float = start_nest_max_hp
+
 var nest_max_hp: float = start_nest_max_hp
-var nest_hp: float = start_nest_max_hp
-	
-				
+var nest_hp: float = start_nest_max_hp:
+	set(value):
+		nest_hp = clampf(value, 0.0, nest_max_hp)
+		nest_hp_changed.emit(nest_hp, nest_max_hp)
+
 #Currency
 var sticks: int = 0:
 	set(value):
@@ -167,13 +178,21 @@ func spend_tickets(amount: int) -> bool:
 	return false
 	
 func damage_nest(amount: float) -> void:
+	print(str(amount) + "amount")
 	nest_hp = clampf(nest_hp - amount, 0.0, nest_max_hp)
-	print("nest_hp changing from ", nest_hp)
+	#print("nest_hp changing from ", nest_hp)
 	nest_hp_changed.emit(nest_hp, nest_max_hp)
 	if !game_ended and nest_hp <= 0.0:
 		nest_destroyed.emit()
 		Leaderboard.add_score(score)
 		game_ended = true
+		
+#func damage_nest(amount: float) -> void:
+	#nest_hp -= amount
+	#if !game_ended and nest_hp <= 0.0:
+		#nest_destroyed.emit()
+		#Leaderboard.add_score(score)
+		#game_ended = true
 			
 func reset_everything() -> void:
 	game_ended = false
