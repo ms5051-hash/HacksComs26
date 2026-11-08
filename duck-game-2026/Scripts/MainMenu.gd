@@ -8,25 +8,33 @@ enum MenuPanelState{
 
 @export var title: Label
 @export var leaderboard_panel: Panel
-@export var leaderboard_places: Array[Label]
+#@export var leaderboard_places: Array[Label]
 @export var credits_panel: Panel
 @export_range(0,5) var leaderboard_duration: float = 1
 @export var menu_buttons: Array[Button]
 var current_menu_state: MenuPanelState = MenuPanelState.Menu
 var currently_tweening: bool = false
 @export_range(3,10) var amount_of_scores: int = 3
+@export var score_label_prefab: PackedScene
 
 func _ready() -> void:
-	var scores = Leaderboard.get_top_scores()
+	# get scores
+	var scores = Leaderboard.get_top_scores(amount_of_scores)
+	var vbox = leaderboard_panel.get_node("VBox")
+	
+	# fill the vbox with labels
+	for i in range(amount_of_scores):
+		var score = score_label_prefab.instantiate()
+		vbox.add_child(score)
 	
 	# fill leaderboard
-	for i in range(leaderboard_places.size()):
-		var leaderboard_text = str(i + 1) + ") "
-		if(scores.size() > i):
-			leaderboard_text = leaderboard_text + scores[i]
-		else:
-			leaderboard_text = leaderboard_text + str(0)
-		leaderboard_places[i].text = leaderboard_text
+	#for i in range(leaderboard_places.size()):
+		#var leaderboard_text = str(i + 1) + ") "
+		#if(scores.size() > i):
+			#leaderboard_text = leaderboard_text + scores[i]
+		#else:
+			#leaderboard_text = leaderboard_text + str(0)
+		#leaderboard_places[i].text = leaderboard_text
 	
 	# set up title tween
 	var tween = create_tween()

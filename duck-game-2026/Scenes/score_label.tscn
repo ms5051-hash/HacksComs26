@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c2etg8bol55qh"]
+
+[ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="1_3yj87"]
+
+[node name="ScoreLabel" type="Label" unique_id=487680092]
+theme_override_fonts/font = ExtResource("1_3yj87")
+theme_override_font_sizes/font_size = 50
+text = "1) 1000"
+horizontal_alignment = 1
