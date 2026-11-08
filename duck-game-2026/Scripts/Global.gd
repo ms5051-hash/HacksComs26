@@ -76,7 +76,7 @@ const start_sticks_per_kill: int = 2
 const start_score_per_kill: int = 10
 
 # FIELDS HERE
-
+var game_ended: bool = false
 #Nest
 var nest_max_hp: float = start_nest_max_hp
 var nest_hp: float = start_nest_max_hp
@@ -152,10 +152,13 @@ func damage_nest(amount: float) -> void:
 	nest_hp = clampf(nest_hp - amount, 0.0, nest_max_hp)
 	print("nest_hp changing from ", nest_hp)
 	nest_hp_changed.emit(nest_hp, nest_max_hp)
-	if nest_hp <= 0.0:
+	if !game_ended and nest_hp <= 0.0:
 		nest_destroyed.emit()
+		Leaderboard.add_score(score)
+		game_ended = true
 			
 func reset_everything() -> void:
+	game_ended = false
 	nest_max_hp = start_nest_max_hp
 	nest_hp = start_nest_max_hp
 	level_xp_max = start_level_xp_max

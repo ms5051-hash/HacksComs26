@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://d1lt7s0rsxdj3" path="res://Assets/Grass.png" id="7_v158k"]
 [ext_resource type="PackedScene" uid="uid://bgaq537fwgryv" path="res://Scenes/hawk.tscn" id="8_1phco"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
-[ext_resource type="Script" uid="uid://duvekrt5tkcls" path="res://Scripts/Hawk.gd" id="9_nb51f"]
 [ext_resource type="Script" uid="uid://b1vokjcvwfc45" path="res://Scripts/ScoreBoard.gd" id="10_ldgsr"]
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="10_o5yvi"]
 [ext_resource type="Script" uid="uid://doivtfckqllut" path="res://Scripts/progress_bar.gd" id="12_rku1e"]
@@ -89,7 +88,6 @@ player = NodePath("../PlayerArea2D")
 
 [node name="Hawk" parent="." unique_id=392546175 node_paths=PackedStringArray("player") instance=ExtResource("8_1phco")]
 visible = false
-script = ExtResource("9_nb51f")
 player = NodePath("../PlayerArea2D")
 
 [node name="Grass" type="Node2D" parent="." unique_id=1617349816]
@@ -242,5 +240,5 @@ theme_override_font_sizes/font_size = 100
 text = "Menu"
 
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
-[connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]
 [connection signal="area_entered" from="Hawk" to="BulletArea2D" method="_on_hawk_area_entered"]
+[connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]

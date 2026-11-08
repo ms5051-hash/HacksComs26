@@ -31,7 +31,7 @@ func _ready() -> void:
 	for i in range(amount_of_scores):
 		var leaderboard_text = str(i + 1) + ") "
 		if(scores.size() > i):
-			leaderboard_text = leaderboard_text + scores[i]
+			leaderboard_text = leaderboard_text + str(scores[i])
 		else:
 			leaderboard_text = leaderboard_text + str(0)
 		var score = score_label_prefab.instantiate()
