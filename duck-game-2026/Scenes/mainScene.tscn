@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://ywae64x00rbs" path="res://Assets/RopeRipped.png" id="10_oy1pr"]
 [ext_resource type="StyleBox" uid="uid://b4b8404t5inxc" path="res://Styles/StyleBoxFlatBasic.tres" id="10_so5kr"]
 [ext_resource type="FontFile" uid="uid://bh251ho7eey2a" path="res://Fonts/Sunny Spells.ttf" id="11_0bgj2"]
+[ext_resource type="Script" uid="uid://bbwrr0440rrc1" path="res://Scripts/DuckDance.gd" id="11_4djc3"]
 [ext_resource type="Texture2D" uid="uid://4upkc5467x8y" path="res://Assets/Duck.png" id="14_uu6ay"]
 [ext_resource type="AudioStream" uid="uid://d1i5s8d2usd56" path="res://Assets/Sounds/EggCrackWithGoosh.wav" id="16_uu6ay"]
+[ext_resource type="Texture2D" uid="uid://crt5oc6vaoj3r" path="res://Assets/DuckHome.png" id="17_08630"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
 
@@ -269,6 +271,78 @@ rotation = -2.3898714
 scale = Vector2(0.5, 0.80999935)
 texture = ExtResource("10_oy1pr")
 
+[node name="Duck2" type="Button" parent="CanvasLayer/Control/Panel" unique_id=1427037591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 565.0
+offset_top = -36.00006
+offset_right = 965.0
+offset_bottom = 363.99994
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.1394815
+pivot_offset = Vector2(72.5, 39)
+theme_override_fonts/font = ExtResource("3_m8nr8")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mhr8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uu6ay")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
+text = "Exit"
+script = ExtResource("11_4djc3")
+
+[node name="BasicWoodButton3" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck2" unique_id=1519599996]
+z_index = -1
+position = Vector2(69.54632, -8.639599)
+rotation = -3.1415925
+scale = Vector2(0.19654372, -0.17161952)
+
+[node name="DuckHome" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck2" unique_id=1115549921]
+position = Vector2(-382.9212, 321.51505)
+rotation = -0.45993412
+texture = ExtResource("17_08630")
+
+[node name="Duck1" type="Button" parent="CanvasLayer/Control/Panel" unique_id=457957129]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -849.0
+offset_top = -44.0
+offset_right = -449.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.3283305
+pivot_offset = Vector2(72.5, 39)
+theme_override_fonts/font = ExtResource("3_m8nr8")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mhr8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uu6ay")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
+text = "Exit"
+script = ExtResource("11_4djc3")
+
+[node name="BasicWoodButton3" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck1" unique_id=1301208146]
+z_index = -1
+position = Vector2(69.54632, -8.639599)
+rotation = -3.1415925
+scale = Vector2(0.19654372, -0.17161952)
+
+[node name="DuckHome" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck1" unique_id=1585104633]
+position = Vector2(-382.9212, 321.51505)
+rotation = -0.45993412
+texture = ExtResource("17_08630")
+
 [node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]
 z_index = 1
 layout_mode = 1
@@ -427,3 +501,7 @@ volume_db = 10.0
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/ExitButton" to="CanvasLayer/Control/Panel/ExitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/Panel/ExitButton" to="CanvasLayer/Control/Panel/ExitButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/Panel/Duck2" to="CanvasLayer/Control/Panel/Duck2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Panel/Duck2" to="CanvasLayer/Control/Panel/Duck2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/Panel/Duck1" to="CanvasLayer/Control/Panel/Duck1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Panel/Duck1" to="CanvasLayer/Control/Panel/Duck1" method="_on_mouse_exited"]
