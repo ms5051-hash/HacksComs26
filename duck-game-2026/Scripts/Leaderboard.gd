@@ -38,15 +38,15 @@ func get_rank_for(score: int) -> int:
 func is_top_score(score: int) -> bool:
 	return get_rank_for(score) > 0
 	
-func get_top_scores() -> Array:
+func get_top_scores(count: int) -> Array:
 	var sorted: Array = all_scores.duplicate()
 	sorted.sort()
 	sorted.reverse()
-	return sorted.slice(0, TOP_COUNT)
+	return sorted.slice(0, count)
 
 # Get Your Scores
 func get_best_score() -> int:
-	var top := get_top_scores()
+	var top := get_top_scores(1)
 	return top[0] if not top.is_empty() else 0
 	
 func get_last_score() -> int:

@@ -28,4 +28,8 @@ func Spawn():
 	enemySpawn.player = player
 	enemySpawn.add_to_group("enemies")
 	enemySpawn.global_position = location
+	var yValue = enemySpawn.global_position.y
+	yValue+=rng.randf_range(-20, 20)
+	enemySpawn.global_position.y = yValue
+	enemySpawn.z_index+=yValue/10
 	add_child(enemySpawn)

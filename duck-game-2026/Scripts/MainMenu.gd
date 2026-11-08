@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 enum MenuPanelState{
 	Menu,
@@ -6,28 +6,36 @@ enum MenuPanelState{
 	Credits
 }
 
+@export var canvas: CanvasLayer
 @export var title: Label
 @export var leaderboard_panel: Panel
-@export var leaderboard_places: Array[Label]
 @export var credits_panel: Panel
 @export_range(0,5) var leaderboard_duration: float = 1
 @export var menu_buttons: Array[Button]
 var current_menu_state: MenuPanelState = MenuPanelState.Menu
 var currently_tweening: bool = false
 @export_range(3,10) var amount_of_scores: int = 3
+@export var score_label_prefab: PackedScene
+@export var egg_prefab: PackedScene
+@export var splat_duration: float = 0.3
 
 func _ready() -> void:
-	var scores = Leaderboard.get_top_scores()
 	
-	# fill leaderboard
-	for i in range(leaderboard_places.size()):
+	# get scores
+	var scores = Leaderboard.get_top_scores(amount_of_scores)
+	var vbox = leaderboard_panel.get_node("VBox")
+	
+	# fill the vbox with labels
+	for i in range(amount_of_scores):
 		var leaderboard_text = str(i + 1) + ") "
 		if(scores.size() > i):
 			leaderboard_text = leaderboard_text + scores[i]
 		else:
 			leaderboard_text = leaderboard_text + str(0)
-		leaderboard_places[i].text = leaderboard_text
-	
+		var score = score_label_prefab.instantiate()
+		score.text = leaderboard_text
+		vbox.add_child(score)
+		
 	# set up title tween
 	var tween = create_tween()
 	
@@ -99,6 +107,10 @@ func _tween_panel_up(panel: Panel) -> void:
 	
 	_set_buttons(false)
 	currently_tweening = true
+	
+	# throw egg here
+	await _tween_egg_splat()
+	
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_BOUNCE)
 	tween.set_ease(Tween.EASE_OUT)
@@ -124,6 +136,26 @@ func _tween_panel_down(panel: Panel) -> void:
 	currently_tweening = false
 	pass
 	
+func _tween_egg_splat() -> void:
+	# make an egg
+	var egg = egg_prefab.instantiate()
+	egg.scale = Vector2(5,5)
+	
+	# get start and end positions
+	egg.position = Vector2(randf_range(0, 1920),1100)
+	canvas.add_child(egg)
+	
+	var end_position: Vector2 = get_global_mouse_position()
+	
+	# make the tween
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(egg, "position", end_position, splat_duration)
+	tween.parallel().tween_property(egg, "scale", Vector2(1,1), splat_duration)
+	await tween.finished
+	pass
 # Signal Functions
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
