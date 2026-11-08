@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var Bullet: PackedScene
+@export var regen_label: PackedScene
 var offsetValue;
 var on_cool_down: bool = false
 var holding_down_left: bool = false
@@ -60,4 +61,8 @@ func _on_timer_timeout() -> void:
 	# handle regen here
 	# happens every second
 	Global.nest_hp += Global.regen
+	var regen_copy = regen_label.instantiate()
+	regen_copy.global_position = global_position
+	get_tree().current_scene.add_child(regen_copy)
+	#regen_copy.position = self.position
 	pass # Replace with function body.

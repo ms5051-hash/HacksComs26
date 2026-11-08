@@ -278,13 +278,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 565.0
-offset_top = -36.00006
-offset_right = 965.0
-offset_bottom = 363.99994
+offset_left = 624.0
+offset_top = 156.0
+offset_right = 1024.0
+offset_bottom = 556.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.1394815
 pivot_offset = Vector2(72.5, 39)
 theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
@@ -293,7 +292,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_uu6ay")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
-text = "Exit"
 script = ExtResource("11_4djc3")
 
 [node name="BasicWoodButton3" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck2" unique_id=1519599996]
@@ -303,8 +301,7 @@ rotation = -3.1415925
 scale = Vector2(0.19654372, -0.17161952)
 
 [node name="DuckHome" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck2" unique_id=1115549921]
-position = Vector2(-382.9212, 321.51505)
-rotation = -0.45993412
+position = Vector2(-546.00006, -95.99997)
 texture = ExtResource("17_08630")
 
 [node name="Duck1" type="Button" parent="CanvasLayer/Control/Panel" unique_id=457957129]
@@ -314,13 +311,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -849.0
-offset_top = -44.0
-offset_right = -449.0
-offset_bottom = 356.0
+offset_left = -784.0
+offset_top = 116.0
+offset_right = -384.0
+offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 1.3283305
+scale = Vector2(-1, 1)
 pivot_offset = Vector2(72.5, 39)
 theme_override_fonts/font = ExtResource("3_m8nr8")
 theme_override_font_sizes/font_size = 50
@@ -329,7 +326,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0d1b")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_uu6ay")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_w8a2l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_so5kr")
-text = "Exit"
 script = ExtResource("11_4djc3")
 
 [node name="BasicWoodButton3" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck1" unique_id=1301208146]
@@ -339,8 +335,7 @@ rotation = -3.1415925
 scale = Vector2(0.19654372, -0.17161952)
 
 [node name="DuckHome" type="Sprite2D" parent="CanvasLayer/Control/Panel/Duck1" unique_id=1585104633]
-position = Vector2(-382.9212, 321.51505)
-rotation = -0.45993412
+position = Vector2(-536, -39.99997)
 texture = ExtResource("17_08630")
 
 [node name="LeaderboardPanel" type="Panel" parent="CanvasLayer/Control" unique_id=632507314]

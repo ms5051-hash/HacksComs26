@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dwb3heqsqcfqt"]
+
+[ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="1_w1bik"]
+[ext_resource type="Script" uid="uid://g7m7dn6unktv" path="res://Scripts/RegenView.gd" id="2_x1na1"]
+
+[node name="RegenLabel" type="Label" unique_id=1513716826]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -11.5
+offset_right = 32.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 8)
+theme_override_colors/font_color = Color(3.465414e-06, 0.5777473, 0.004887774, 1)
+theme_override_fonts/font = ExtResource("1_w1bik")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("2_x1na1")
