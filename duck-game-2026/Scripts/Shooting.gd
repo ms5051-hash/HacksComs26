@@ -35,6 +35,7 @@ func _on_area_entered(area: Area2D) -> void:
 				$BulletSprite2D.rotation_degrees = 0
 			else:
 				$BulletSprite2D.rotation_degrees = 180
+		$"..".play_sfx(preload("res://Assets/Sounds/EggCrackWithGoosh.wav"))
 		await get_tree().create_timer(.05).timeout
 		speed = 0
 		if(area != null):

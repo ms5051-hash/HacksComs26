@@ -10,7 +10,9 @@ var spawnFoxRate = 0
 var spawnHawkRate = 0
 var timeUntilFoxSpawn = 0
 var timeUntilHawkSpawn = 0
-
+var wave = 0
+var waveActive = false
+var waveEnemies: Array[Node2D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,27 +20,96 @@ func _ready() -> void:
 	spawnFoxRate = 1/eps
 	if hps > 0:
 		spawnHawkRate = 1/hps
+	
+	#Waves
+	await get_tree().create_timer(1.0).timeout
+	Spawn()
+	await get_tree().create_timer(10.0).timeout
+	Spawn()
+	await get_tree().create_timer(10.0).timeout
+	Spawn()
+	await get_tree().create_timer(10.0).timeout
+	Spawn()
+	await get_tree().create_timer(8.0).timeout
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(10.0).timeout
+	Spawn()
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(10.0).timeout
+	Spawn()
+	Spawn()
+	Spawn()
+	await get_tree().create_timer(7.0).timeout
+	SpawnHawk()
+	Spawn()
+	await get_tree().create_timer(6.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	SpawnHawk()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	SpawnHawk()
+	await get_tree().create_timer(10.0).timeout
+	Spawn()
+	Spawn()
+	SpawnHawk()
+	SpawnHawk()
+	SpawnHawk()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	SpawnHawk()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	await get_tree().create_timer(5.0).timeout
+	Spawn()
+	SpawnHawk()
+	
+	
 
 func _on_level_change(level: int) -> void:
 	if hps == 0 and Global.level > 10:
 		hps = 0.1
-	eps *= 1.15
-	hps *= 1.15
-	spawnFoxRate = 1/eps
-	if hps != 0:
-		spawnHawkRate = 1/hps
-	pass
+		
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
 	if(timeUntilFoxSpawn>spawnFoxRate):
-		Spawn()
+		#Spawn()
 		timeUntilFoxSpawn = 0
 	else:
 		timeUntilFoxSpawn+=delta
 	
 	if(spawnHawkRate != 0 and timeUntilHawkSpawn>spawnHawkRate):
-		SpawnHawk()
+		#SpawnHawk()
 		timeUntilHawkSpawn = 0
 	else:
 		timeUntilHawkSpawn+=delta

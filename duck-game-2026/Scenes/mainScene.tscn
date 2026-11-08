@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://ywae64x00rbs" path="res://Assets/RopeRipped.png" id="10_oy1pr"]
 [ext_resource type="StyleBox" uid="uid://b4b8404t5inxc" path="res://Styles/StyleBoxFlatBasic.tres" id="10_so5kr"]
 [ext_resource type="FontFile" uid="uid://bh251ho7eey2a" path="res://Fonts/Sunny Spells.ttf" id="11_0bgj2"]
-[ext_resource type="AudioStream" uid="uid://cpm7tcgl1hyf7" path="res://Assets/Sounds/EggCrackGoosh.wav" id="12_w8a2l"]
 [ext_resource type="Texture2D" uid="uid://4upkc5467x8y" path="res://Assets/Duck.png" id="14_uu6ay"]
+[ext_resource type="AudioStream" uid="uid://d1i5s8d2usd56" path="res://Assets/Sounds/EggCrackWithGoosh.wav" id="16_uu6ay"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
 
@@ -412,7 +412,7 @@ position = Vector2(960, 544)
 texture = ExtResource("7_0vbqt")
 
 [node name="EggSplat" type="AudioStreamPlayer2D" parent="." unique_id=2036451310]
-stream = ExtResource("12_w8a2l")
+stream = ExtResource("16_uu6ay")
 volume_db = 10.0
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_entered"]
