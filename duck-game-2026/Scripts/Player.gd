@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var Bullet: PackedScene
+var offsetValue;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,10 +15,18 @@ func _process(delta: float) -> void:
 func shoot():
 	#instantiating player
 	var b = Bullet.instantiate()
+	var offsetX = Transform2D()
+	var bSprite = b.get_node("BulletSprite2D")
+	offsetX.origin = Vector2(offsetValue, 0)
 	
 	#makes bullet a child of player
 	owner.add_child(b)
-	b.transform = global_transform
+	if(flip_h==true):
+		b.direction = -1
+	else:
+		b.direction = 1
+	bSprite.flip_v = flip_h
+	b.transform = global_transform*offsetX
 	
 func _physics_process(delta: float) -> void:
 	#get the mouse position, subtract that from the objects position
@@ -26,6 +35,8 @@ func _physics_process(delta: float) -> void:
 	if (get_global_mouse_position().x>global_position.x):
 		flip_h = false
 		rotation = (get_global_mouse_position()-global_position).angle()
+		offsetValue = 10
 	else:
 		flip_h = true
 		rotation = (-(get_global_mouse_position()-global_position)).angle()
+		offsetValue = -10

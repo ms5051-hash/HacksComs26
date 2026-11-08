@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5r56sm06r63p" path="res://Assets/Tower.png" id="4_3dryh"]
 [ext_resource type="Texture2D" uid="uid://tpeuj6jcbn06" path="res://Assets/DuckFeet.png" id="5_ldgsr"]
 [ext_resource type="Script" uid="uid://c6gps3v3gtknn" path="res://Scripts/enemy_spawner.gd" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://dj467x4eo72on" path="res://Scenes/area_2d.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://dj467x4eo72on" path="res://Scenes/enemy.tscn" id="6_i6g32"]
 [ext_resource type="Texture2D" uid="uid://d1lt7s0rsxdj3" path="res://Assets/Grass.png" id="7_v158k"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
 
@@ -14,19 +14,19 @@
 
 [node name="Game" type="Node2D" unique_id=1315213113]
 
-[node name="BulletArea2D" parent="." unique_id=1332803089 instance=ExtResource("1_wrm1d")]
+[node name="BulletArea2D" parent="." unique_id=1332803089 node_paths=PackedStringArray("player") instance=ExtResource("1_wrm1d")]
 visible = false
 rotation = -4.710644
-collision_layer = 1
-collision_mask = 1
+scale = Vector2(10.88, 10)
+player = NodePath("../PlayerArea2D/PlayerSprite2D")
 
 [node name="PlayerArea2D" type="Area2D" parent="." unique_id=195692555]
 position = Vector2(953, 754)
 
 [node name="PlayerSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=832187776]
 z_index = 1
-position = Vector2(5.0000005, 54)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-1, 50)
+scale = Vector2(0.1, 0.15)
 texture = ExtResource("2_h4fw4")
 script = ExtResource("2_wrm1d")
 Bullet = ExtResource("1_wrm1d")
@@ -41,7 +41,7 @@ texture = ExtResource("4_3dryh")
 
 [node name="Feet" type="Sprite2D" parent="PlayerArea2D" unique_id=871130237]
 position = Vector2(0, 54)
-scale = Vector2(0.16000122, 0.19999996)
+scale = Vector2(0.15, 0.1)
 texture = ExtResource("5_ldgsr")
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1191588194 node_paths=PackedStringArray("spawnPoints", "player")]

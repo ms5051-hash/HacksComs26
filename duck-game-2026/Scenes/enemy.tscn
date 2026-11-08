@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7si6p"]
 size = Vector2(144, 136)
 
-[node name="Area2D" type="Area2D" unique_id=638344407]
+[node name="enemyArea2D" type="Area2D" unique_id=638344407]
 script = ExtResource("1_jb3vm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1167181943]
