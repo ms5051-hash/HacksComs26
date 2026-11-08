@@ -6,10 +6,12 @@
 [ext_resource type="FontFile" uid="uid://dcqadqtoqq4qe" path="res://Fonts/BD_Cartoon_Shout.ttf" id="3_m8nr8"]
 [ext_resource type="PackedScene" uid="uid://c7fkcdahblr1h" path="res://Scenes/visual_egg.tscn" id="3_mhr8t"]
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="4_47rga"]
+[ext_resource type="PackedScene" uid="uid://cok7y84wgc5eb" path="res://Scenes/visual_splat.tscn" id="4_w8a2l"]
 [ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="6_w1dup"]
 [ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="6_yyxd1"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="7_0vbqt"]
 [ext_resource type="PackedScene" uid="uid://c2etg8bol55qh" path="res://Scenes/score_label.tscn" id="7_uvydw"]
+[ext_resource type="AudioStream" uid="uid://cpm7tcgl1hyf7" path="res://Assets/Sounds/EggCrackGoosh.wav" id="12_w8a2l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
 
@@ -40,7 +42,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1dup"]
 bg_color = Color(0.6625, 0.75, 0, 1)
 
-[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("canvas", "title", "leaderboard_panel", "credits_panel", "menu_buttons")]
+[node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("canvas", "title", "leaderboard_panel", "credits_panel", "menu_buttons", "egg_splat_sound")]
 script = ExtResource("1_2c717")
 canvas = NodePath("CanvasLayer")
 title = NodePath("CanvasLayer/Control/Panel/Title")
@@ -51,6 +53,8 @@ menu_buttons = [NodePath("CanvasLayer/Control/Panel/PlayButton"), NodePath("Canv
 amount_of_scores = 10
 score_label_prefab = ExtResource("7_uvydw")
 egg_prefab = ExtResource("3_mhr8t")
+splat_prefab = ExtResource("4_w8a2l")
+egg_splat_sound = NodePath("EggSplat")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=418878514]
 
@@ -325,6 +329,10 @@ texture = ExtResource("6_yyxd1")
 [node name="Sky" type="Sprite2D" parent="." unique_id=951986576]
 position = Vector2(960, 544)
 texture = ExtResource("7_0vbqt")
+
+[node name="EggSplat" type="AudioStreamPlayer2D" parent="." unique_id=2036451310]
+stream = ExtResource("12_w8a2l")
+volume_db = 10.0
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/Panel/PlayButton" to="CanvasLayer/Control/Panel/PlayButton" method="_on_mouse_exited"]

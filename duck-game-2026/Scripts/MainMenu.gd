@@ -17,7 +17,9 @@ var currently_tweening: bool = false
 @export_range(3,10) var amount_of_scores: int = 3
 @export var score_label_prefab: PackedScene
 @export var egg_prefab: PackedScene
+@export var splat_prefab: PackedScene
 @export var splat_duration: float = 0.3
+@export var egg_splat_sound: AudioStreamPlayer2D
 
 func _ready() -> void:
 	
@@ -154,10 +156,24 @@ func _tween_egg_splat() -> void:
 	
 	tween.tween_property(egg, "position", end_position, splat_duration)
 	tween.parallel().tween_property(egg, "scale", Vector2(1,1), splat_duration)
+	tween.parallel().tween_property(egg, "rotation", deg_to_rad(360), splat_duration)
+	
 	await tween.finished
+	
+	egg_splat_sound.play()
+	
+	# change the image to the egg splat
+	egg.queue_free()
+	
+	var splat = splat_prefab.instantiate()
+	splat.rotation = deg_to_rad(randf_range(0,360))
+	splat.position = end_position
+	canvas.add_child(splat)
 	pass
 # Signal Functions
 func _on_play_button_pressed() -> void:
+	await _tween_egg_splat()
+	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	pass # Replace with function body.
 

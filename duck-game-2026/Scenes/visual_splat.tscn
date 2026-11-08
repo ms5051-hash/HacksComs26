@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cok7y84wgc5eb"]
+
+[ext_resource type="Texture2D" uid="uid://b1k1fafni8yf1" path="res://Assets/EggSplat2.png" id="1_erv5a"]
+[ext_resource type="Script" uid="uid://cpdtiedyfqug7" path="res://Scripts/Splat_Fade.gd" id="2_5gbhx"]
+
+[node name="visual_splat" type="Sprite2D" unique_id=1956062922]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_erv5a")
+script = ExtResource("2_5gbhx")
