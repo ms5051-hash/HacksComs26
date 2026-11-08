@@ -54,3 +54,10 @@ func _physics_process(delta: float) -> void:
 		flip_h = true
 		rotation = (-(get_global_mouse_position()-global_position)).angle()
 		offsetValue = -10
+
+
+func _on_timer_timeout() -> void:
+	# handle regen here
+	# happens every second
+	Global.nest_hp += Global.regen
+	pass # Replace with function body.

@@ -4,13 +4,14 @@ enum Upgrades{
 	MaxHealth,
 	FireRate,
 	Damage,
-	#Regen
+	Regen
 }
 
 var upgrade_snippets = {
 	Upgrades.MaxHealth: "Increase Max Health",
 	Upgrades.FireRate: "Increase Fire Rate",
-	Upgrades.Damage: "Increase Egg Damage"
+	Upgrades.Damage: "Increase Egg Damage",
+	Upgrades.Regen: "Increase Regen"
 }
 
 @export var array_of_upgrade_buttons: Array[Button]
@@ -112,16 +113,21 @@ func _tween_up() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_random_one_pressed() -> void:
-	# Upgrade here
-	match button_upgrade_array[0]:
+func _determine_upgrade(button_num: int) -> void:
+	match button_upgrade_array[button_num]:
 		Upgrades.FireRate:
 			Global.egg_fire_rate *= Global.fire_rate_multiplier
 		Upgrades.MaxHealth:
 			Global.nest_max_hp *= Global.nest_max_hp_multiplier
 		Upgrades.Damage:
 			Global.egg_damage *= Global.egg_damage_multiplier
+		Upgrades.Regen:
+			Global.regen *= Global.regen_multiplier
+	pass
+
+func _on_random_one_pressed() -> void:
+	# Upgrade here
+	_determine_upgrade(0)
 	await _tween_up()
 	if num_of_times_upgraded < Global.level:
 		_tween_down()
@@ -130,13 +136,7 @@ func _on_random_one_pressed() -> void:
 
 func _on_random_two_pressed() -> void:
 	
-	match button_upgrade_array[1]:
-		Upgrades.FireRate:
-			Global.egg_fire_rate *= Global.fire_rate_multiplier
-		Upgrades.MaxHealth:
-			Global.nest_max_hp *= Global.nest_max_hp_multiplier
-		Upgrades.Damage:
-			Global.egg_damage *= Global.egg_damage_multiplier
+	_determine_upgrade(1)
 	await _tween_up()
 	if num_of_times_upgraded < Global.level:
 		_tween_down()
@@ -144,13 +144,8 @@ func _on_random_two_pressed() -> void:
 
 
 func _on_random_three_pressed() -> void:
-	match button_upgrade_array[2]:
-		Upgrades.FireRate:
-			Global.egg_fire_rate *= Global.fire_rate_multiplier
-		Upgrades.MaxHealth:
-			Global.nest_max_hp *= Global.nest_max_hp_multiplier
-		Upgrades.Damage:
-			Global.egg_damage *= Global.egg_damage_multiplier
+	
+	_determine_upgrade(2)
 	await _tween_up()
 	if num_of_times_upgraded < Global.level:
 		_tween_down()

@@ -75,6 +75,8 @@ const start_enemy_base_hp: float = 100.0
 const start_sticks_per_kill: int = 2
 const start_score_per_kill: int = 10
 const start_egg_fire_rate: int = 1
+# 2 health every second
+const start_regen: float = 2
 
 # FIELDS HERE
 
@@ -87,7 +89,7 @@ const regen_multiplier: float = 1.1
 var egg_damage: float = start_egg_damage
 # egg shots per second
 var egg_fire_rate: float = start_egg_fire_rate
-
+var regen: float = start_regen
 var enemy_base_hp: float = start_enemy_base_hp
 var sticks_per_kill: int = start_sticks_per_kill
 var score_per_kill: int = start_score_per_kill
@@ -177,6 +179,7 @@ func reset_everything() -> void:
 	level_xp_max = start_level_xp_max
 	egg_damage = start_egg_damage
 	egg_fire_rate = start_egg_fire_rate
+	regen = start_regen
 	enemy_base_hp = start_enemy_base_hp
 	sticks_per_kill = start_sticks_per_kill
 	score_per_kill = start_score_per_kill

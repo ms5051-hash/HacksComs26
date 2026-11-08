@@ -76,6 +76,9 @@ position = Vector2(0, 56)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ldgsr")
 
+[node name="Timer" type="Timer" parent="PlayerArea2D" unique_id=2032528299]
+autostart = true
+
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1191588194 node_paths=PackedStringArray("spawnPoints", "player")]
 script = ExtResource("5_wowpa")
 enemy = ExtResource("6_i6g32")
@@ -392,6 +395,7 @@ position = Vector2(370, -58.999992)
 scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
+[connection signal="timeout" from="PlayerArea2D/Timer" to="PlayerArea2D/PlayerSprite2D" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
 [connection signal="area_entered" from="Hawk" to="BulletArea2D" method="_on_hawk_area_entered"]
 [connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]
