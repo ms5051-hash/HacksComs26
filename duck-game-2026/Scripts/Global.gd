@@ -4,6 +4,7 @@ signal sticks_changed(amount: int)
 signal nest_hp_changed(current: float,maximum: float)
 signal wave_changed(wave: int)
 signal nest_destroyed
+signal score_changed(new_score: int)
 
 #Enum
 enum GameState {MENU, PLAYING, PAUSED, SHOP, GAME_OVER, VICTORY}
@@ -82,7 +83,10 @@ var current_wave: int = 0:
 		current_wave = value
 		wave_changed.emit(current_wave)
 		
-var score: int = 0
+var score: int = 0:
+	set(value):
+		score = value
+		score_changed.emit(score)
 
 # Egg Damage
 var egg_damage: float = 10.0
@@ -107,8 +111,6 @@ func spend_tickets(amount: int) -> bool:
 	
 func damage_nest(amount: float) -> void:
 	nest_hp -= amount
-	
-	
 	
 	
 # Function that when you lose brings you to the GameOver Scene
