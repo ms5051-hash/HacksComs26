@@ -10,6 +10,7 @@ var first
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
+	$"..".play_sfx(preload("res://Assets/Sounds/Pop.wav"))
 	first = true
 	
 func _physics_process(delta: float) -> void:

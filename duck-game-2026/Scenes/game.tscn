@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bmkkx75icxgef" path="res://Scripts/FancyButton.gd" id="17_85qyi"]
 [ext_resource type="Texture2D" uid="uid://c0y34dc0xby81" path="res://Assets/BasicWoodButton.png" id="17_ewbju"]
 [ext_resource type="Texture2D" uid="uid://hcx8hli4a2y7" path="res://Assets/Rope.png" id="19_iivbl"]
+[ext_resource type="AudioStream" uid="uid://c4vaw8h1gund1" path="res://Assets/Sounds/Pop.wav" id="21_exi56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 size = Vector2(246, 333)
@@ -43,8 +44,9 @@ bg_color = Color(0.88780314, 0.4148887, 0.4073061, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nbq1"]
 
-[node name="Game" type="Node2D" unique_id=1315213113]
+[node name="Game" type="Node2D" unique_id=1315213113 node_paths=PackedStringArray("audioPlayer")]
 script = ExtResource("1_nb51f")
+audioPlayer = NodePath("AudioPlayer")
 
 [node name="BulletArea2D" parent="." unique_id=1332803089 node_paths=PackedStringArray("player") instance=ExtResource("1_wrm1d")]
 rotation = -4.710644
@@ -87,16 +89,16 @@ spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight"), NodePath
 player = NodePath("../PlayerArea2D")
 
 [node name="SpawnPointLeft" type="Node2D" parent="EnemySpawner" unique_id=1896892598]
-position = Vector2(0, 1000)
+position = Vector2(-100, 1000)
 
 [node name="SpawnPointRight" type="Node2D" parent="EnemySpawner" unique_id=708173840]
-position = Vector2(1920, 1000)
+position = Vector2(2020, 1000)
 
 [node name="SpawnPointLeft2" type="Node2D" parent="EnemySpawner" unique_id=320921292]
-position = Vector2(0, 200)
+position = Vector2(-100, 200)
 
 [node name="SpawnPointRight2" type="Node2D" parent="EnemySpawner" unique_id=2067627256]
-position = Vector2(1920, 200)
+position = Vector2(2020, 200)
 
 [node name="Enemy" parent="." unique_id=638344407 node_paths=PackedStringArray("player") instance=ExtResource("6_i6g32")]
 visible = false
@@ -396,6 +398,10 @@ scale = Vector2(1, 1.54)
 texture = ExtResource("19_iivbl")
 
 [connection signal="timeout" from="PlayerArea2D/Timer" to="PlayerArea2D/PlayerSprite2D" method="_on_timer_timeout"]
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1757720021]
+stream = ExtResource("21_exi56")
+volume_db = 10.0
+
 [connection signal="area_entered" from="Enemy" to="BulletArea2D" method="_on_enemy_area_entered"]
 [connection signal="area_entered" from="Hawk" to="BulletArea2D" method="_on_hawk_area_entered"]
 [connection signal="pressed" from="UI/CanvasLayer/GameOverPanel/MenuButton" to="UI/CanvasLayer/GameOverPanel" method="_on_menu_button_pressed"]
