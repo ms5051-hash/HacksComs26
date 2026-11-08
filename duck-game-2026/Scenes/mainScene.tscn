@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="6_yyxd1"]
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="7_0vbqt"]
 [ext_resource type="PackedScene" uid="uid://c2etg8bol55qh" path="res://Scenes/score_label.tscn" id="7_uvydw"]
+[ext_resource type="StyleBox" uid="uid://b4b8404t5inxc" path="res://Styles/StyleBoxFlatBasic.tres" id="10_so5kr"]
+[ext_resource type="FontFile" uid="uid://bh251ho7eey2a" path="res://Fonts/Sunny Spells.ttf" id="11_0bgj2"]
 [ext_resource type="AudioStream" uid="uid://cpm7tcgl1hyf7" path="res://Assets/Sounds/EggCrackGoosh.wav" id="12_w8a2l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08630"]
@@ -38,9 +40,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oy1pr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu6ay"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1dup"]
-bg_color = Color(0.6625, 0.75, 0, 1)
 
 [node name="Main" type="Node2D" unique_id=596674964 node_paths=PackedStringArray("canvas", "title", "leaderboard_panel", "credits_panel", "menu_buttons", "egg_splat_sound")]
 script = ExtResource("1_2c717")
@@ -91,7 +90,7 @@ theme_override_colors/font_outline_color = Color(0, 0.2140898, 0.9899928, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("2_hewda")
 theme_override_font_sizes/font_size = 150
-text = "DUCK GAME"
+text = "Quack Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -265,7 +264,7 @@ offset_top = 1080.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w1dup")
+theme_override_styles/panel = ExtResource("10_so5kr")
 
 [node name="LeaderboardTitle" type="Label" parent="CanvasLayer/Control/LeaderboardPanel" unique_id=1581982329]
 z_index = 1
@@ -311,17 +310,79 @@ offset_top = 1080.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("10_so5kr")
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/CreditsPanel" unique_id=892277760]
+[node name="CreditsTitle" type="Label" parent="CanvasLayer/Control/CreditsPanel" unique_id=649913588]
 z_index = 1
-layout_mode = 0
-offset_right = 1912.0
-offset_bottom = 1080.0
-theme_override_font_sizes/font_size = 50
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 208.0
+offset_right = 598.0
+offset_bottom = 527.0
+grow_horizontal = 2
+pivot_offset = Vector2(600, 176)
+theme_override_fonts/font = ExtResource("2_hewda")
+theme_override_font_sizes/font_size = 150
 text = "CREDITS
 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Control/CreditsPanel" unique_id=1448085953]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -486.0
+offset_top = -176.0
+offset_right = 485.0
+offset_bottom = 524.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(384, 284)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CreditsPanel/VBox" unique_id=946449840]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_0bgj2")
+theme_override_font_sizes/font_size = 150
+text = "Harrison Westerfield"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CreditsPanel/VBox" unique_id=539818138]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_0bgj2")
+theme_override_font_sizes/font_size = 150
+text = "Nicholas Foong"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/CreditsPanel/VBox" unique_id=375582453]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_0bgj2")
+theme_override_font_sizes/font_size = 150
+text = "Kaiden Lakhreeram"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/CreditsPanel/VBox" unique_id=130835643]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_0bgj2")
+theme_override_font_sizes/font_size = 150
+text = "Matthew Szeto"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control/CreditsPanel/VBox" unique_id=1672961413]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_0bgj2")
+theme_override_font_sizes/font_size = 150
+text = "Friends: Kevin Chen, Tony Xiao"
+horizontal_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="CanvasLayer/Control/CreditsPanel" unique_id=802036132]
+visible = false
 position = Vector2(960, 539.99994)
 scale = Vector2(15, 8.437501)
 texture = ExtResource("6_yyxd1")
