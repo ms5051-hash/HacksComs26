@@ -14,6 +14,7 @@ enum MenuPanelState{
 @export var menu_buttons: Array[Button]
 var current_menu_state: MenuPanelState = MenuPanelState.Menu
 var currently_tweening: bool = false
+@export_range(3,10) var amount_of_scores: int = 3
 
 func _ready() -> void:
 	var scores = Leaderboard.get_top_scores()
