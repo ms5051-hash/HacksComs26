@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xq0ia4bw4q7f" path="res://Assets/Sky.png" id="8_h4fw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
+size = Vector2(246, 333)
 
 [node name="Game" type="Node2D" unique_id=1315213113]
 
@@ -32,6 +33,7 @@ script = ExtResource("2_wrm1d")
 Bullet = ExtResource("1_wrm1d")
 
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D" unique_id=215517761]
+position = Vector2(-16, 142.5)
 shape = SubResource("RectangleShape2D_wrm1d")
 
 [node name="NestSprite2D" type="Sprite2D" parent="PlayerArea2D" unique_id=1385897532]
