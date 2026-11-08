@@ -1,10 +1,15 @@
 extends Node
 
+const level_max_multiplier: float = 1.1
 signal sticks_changed(amount: int)
 signal nest_hp_changed(current: float,maximum: float)
 signal wave_changed(wave: int)
 signal nest_destroyed
 signal score_changed(new_score: int)
+signal level_xp_changed(new_level_max: int)
+signal level_xp_max_changed(new_level_max: int)
+signal level_changed(new_level: int)
+
 
 #Enum
 enum GameState {MENU, PLAYING, PAUSED, SHOP, GAME_OVER, VICTORY}
@@ -62,9 +67,19 @@ func predator_killed(type: int) -> void:
 func predator_hit_nest(type: int) -> void:
 	damage_nest(predator_stats[type]["nest_damage"])
 	
+# FIELD START VALUES HERE
+const start_nest_max_hp: float = 100.0
+const start_level_xp_max: float = 10.0
+const start_egg_damage: float = 10.0
+const start_enemy_base_hp: float = 100.0
+const start_sticks_per_kill: int = 2
+const start_score_per_kill: int = 10
+
+# FIELDS HERE
+
 #Nest
-var nest_max_hp: float = 100.0
-var nest_hp: float = 100.0
+var nest_max_hp: float = start_nest_max_hp
+var nest_hp: float = start_nest_max_hp
 	
 				
 #Currency
@@ -78,17 +93,45 @@ var current_wave: int = 0:
 	set(value):
 		current_wave = value
 		wave_changed.emit(current_wave)
-		
-var score: int = 0:
+
+# this is the total XP
+var score: float = 0:
 	set(value):
 		score = value
 		score_changed.emit(score)
 
+# current level xp in the bar
+var level_xp: float = 0:
+	set(value):
+		# if its ever over the max,
+		# then simply increment level and 
+		# set new max
+		# set new current level
+		if value >= level_xp_max:
+			level_xp = level_xp - level_xp_max
+			level_xp_max = level_xp_max * level_max_multiplier
+			level += 1
+		else:
+			level_xp = value
+		level_xp_changed.emit(level_xp)
+
+# current level
+var level: int = 0:
+	set(value):
+		level = value
+		level_changed.emit(level)
+
+# current max xp in the bar
+var level_xp_max: float = start_level_xp_max:
+	set(value):
+		level_xp_max = value
+		level_xp_max_changed.emit(level_xp_max)
+
 # Egg Damage
-var egg_damage: float = 10.0
-var enemy_base_hp: float = 100.0
-var sticks_per_kill: int = 2
-var score_per_kill: int = 10
+var egg_damage: float = start_egg_damage
+var enemy_base_hp: float = start_enemy_base_hp
+var sticks_per_kill: int = start_sticks_per_kill
+var score_per_kill: int = start_score_per_kill
 
 # When enemy dies
 func enemy_killed() -> void:
@@ -111,8 +154,21 @@ func damage_nest(amount: float) -> void:
 	nest_hp_changed.emit(nest_hp, nest_max_hp)
 	if nest_hp <= 0.0:
 		nest_destroyed.emit()
-	
-	
+			
+func reset_everything() -> void:
+	nest_max_hp = start_nest_max_hp
+	nest_hp = start_nest_max_hp
+	level_xp_max = start_level_xp_max
+	egg_damage = start_egg_damage
+	enemy_base_hp = start_enemy_base_hp
+	sticks_per_kill = start_sticks_per_kill
+	score_per_kill = start_score_per_kill
+	sticks = 0
+	current_wave = 0
+	score = 0
+	level_xp = 0
+	level = 0
+	pass
 # Function that when you lose brings you to the GameOver Scene
 # Func _ready() -> void
 #     Globals.nest_destoryed.connect(on_nest_destroyed)

@@ -6,7 +6,6 @@ var displayed_score: int = 0
 
 func _ready() -> void:
 	Global.score_changed.connect(_on_score_changed)
-	
 	_update_label()
 
 func _on_score_changed(new_score: int) -> void:
@@ -14,11 +13,9 @@ func _on_score_changed(new_score: int) -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "displayed_score", int(new_score), 0.3)
 	tween.parallel().tween_callback(_pop)
-
-func _process(_delta: float) -> void:
 	displayed_score = Global.score
 	_update_label()
-
+	
 func _update_label() -> void:
 	score_label.text = "Score: " + str(displayed_score)
 
