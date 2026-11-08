@@ -51,10 +51,10 @@ spawnPoints = [NodePath("SpawnPointLeft"), NodePath("SpawnPointRight")]
 player = NodePath("../PlayerArea2D")
 
 [node name="SpawnPointLeft" type="Node2D" parent="EnemySpawner" unique_id=1896892598]
-position = Vector2(0, 891)
+position = Vector2(0, 1000)
 
 [node name="SpawnPointRight" type="Node2D" parent="EnemySpawner" unique_id=708173840]
-position = Vector2(1919, 919)
+position = Vector2(1920, 1000)
 
 [node name="Enemy" parent="." unique_id=638344407 node_paths=PackedStringArray("player") instance=ExtResource("6_i6g32")]
 visible = false

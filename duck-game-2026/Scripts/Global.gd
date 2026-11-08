@@ -41,25 +41,26 @@ func is_playing() -> bool:
 	return game_state == GameState.PLAYING
 		
 
-#var predator_stats: Dictionary = {
-	#PredatorType.FOX:  {"hp": 30.0, "speed": 110.0, "nest_damage": 3.0, "sticks": 2, "score": 10, "flying": false},
-	#PredatorType.HAWK: {"hp": 20.0, "speed": 170.0, "nest_damage": 2.0, "sticks": 3, "score": 15, "flying": true},
-	#PredatorType.SNAKE: {"hp": 80.0, "speed": 50.0, "nest_damage": 5.0, "sticks": 5, "score": 25, "flying": false},
-#}
+#Predator stats and functions during the game
+var predator_stats: Dictionary = {
+	PredatorType.FOX:  {"hp": 30.0, "speed": 20.0, "nest_damage": 3.0, "sticks": 2, "score": 10, "flying": false},
+	PredatorType.HAWK: {"hp": 20.0, "speed": 60.0, "nest_damage": 2.0, "sticks": 3, "score": 15, "flying": true},
+	PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 25, "flying": false},
+}
 
-#func get_predator_stat(type: int, stat: String):
-	#return predator_stats[type][stat]
+func get_predator_stat(type: int, stat: String):
+	return predator_stats[type][stat]
 	
-#func is_flying(type: int) -> bool:
+func is_flying(type: int) -> bool:
+	return predator_stats[type]["flying"]
 	
-#func predator_killed(type: int) -> void:
+func predator_killed(type: int) -> void:
+	add_sticks(predator_stats[type]["sticks"])
+	score += predator_stats[type]["score"]
 	
-#func predator_hit_nest(type: int) -> void:
+func predator_hit_nest(type: int) -> void:
+	damage_nest(predator_stats[type]["nest_damage"])
 	
-
-
-
-
 #Nest
 var nest_max_hp: float = 100.0
 var nest_hp: float = 100.0:
@@ -83,9 +84,16 @@ var current_wave: int = 0:
 		
 var score: int = 0
 
-#Weapon
-var weapon_damage: int = 10.0
-var weapon_fire_rate: int = 3.0
+# Egg Damage
+var egg_damage: float = 10.0
+var enemy_base_hp: float = 100.0
+var sticks_per_kill: int = 2
+var score_per_kill: int = 10
+
+# When enemy dies
+func enemy_killed() -> void:
+	add_sticks(sticks_per_kill)
+	score += score_per_kill
 
 #Helpers
 func add_sticks(amount: int) -> void:

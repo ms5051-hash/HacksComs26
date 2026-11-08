@@ -1,7 +1,26 @@
 [gd_scene format=3 uid="uid://dj467x4eo72on"]
 
-[ext_resource type="Texture2D" uid="uid://cmverp0qpdpg5" path="res://icon.svg" id="1_81842"]
 [ext_resource type="Script" uid="uid://cqou4tbf2admc" path="res://Scripts/Enemy.gd" id="1_jb3vm"]
+[ext_resource type="Texture2D" uid="uid://daco6eemw7878" path="res://Assets/Fox1.png" id="2_66wql"]
+[ext_resource type="Texture2D" uid="uid://dy26a7ecmw4su" path="res://Assets/Fox2.png" id="3_bc6eb"]
+[ext_resource type="Texture2D" uid="uid://dh4b3dlt0rmbr" path="res://Assets/Fox3.png" id="4_gdhrw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfxxt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_66wql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bc6eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gdhrw")
+}],
+"loop": 1,
+"name": &"Fox",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7si6p"]
 size = Vector2(144, 136)
@@ -9,8 +28,11 @@ size = Vector2(144, 136)
 [node name="enemyArea2D" type="Area2D" unique_id=638344407]
 script = ExtResource("1_jb3vm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1167181943]
-texture = ExtResource("1_81842")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=770813398]
+scale = Vector2(0.24722221, 0.24722221)
+sprite_frames = SubResource("SpriteFrames_yfxxt")
+animation = &"Fox"
+frame_progress = 0.3246101
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=546232621]
 position = Vector2(-2, 0)
