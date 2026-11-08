@@ -26,7 +26,15 @@ func _on_area_entered(area: Area2D) -> void:
 	#print("Hi")
 	if(area.is_in_group("enemies")):
 		area.hp = area.hp - 1
-		
+		$BulletSprite2D.texture = preload("res://Assets/EggSplat.png")
+		if($BulletSprite2D.rotation_degrees == -90):
+			if(position.x > 960):
+				$BulletSprite2D.rotation_degrees = 0
+			else:
+				$BulletSprite2D.rotation_degrees = 180
+		await get_tree().create_timer(.05).timeout
+		speed = 0
+		await get_tree().create_timer(1.0).timeout
 		queue_free()
 		if(area.hp <= 0):
 			area.queue_free()
