@@ -32,6 +32,8 @@ func _ready() -> void:
 	Spawn()
 	await get_tree().create_timer(10.0).timeout
 	Spawn()
+	SpawnHawk()
+	SpawnHawk()
 	await get_tree().create_timer(8.0).timeout
 	Spawn()
 	await get_tree().create_timer(6.0).timeout
@@ -41,22 +43,9 @@ func _ready() -> void:
 	await get_tree().create_timer(10.0).timeout
 	Spawn()
 	Spawn()
-	await get_tree().create_timer(6.0).timeout
-	Spawn()
-	await get_tree().create_timer(6.0).timeout
-	Spawn()
-	await get_tree().create_timer(6.0).timeout
-	Spawn()
-	await get_tree().create_timer(6.0).timeout
-	Spawn()
-	await get_tree().create_timer(5.0).timeout
-	Spawn()
-	await get_tree().create_timer(5.0).timeout
-	Spawn()
+	SpawnHawk()
 	await get_tree().create_timer(10.0).timeout
-	Spawn()
-	Spawn()
-	Spawn()
+	SpawnSnake()
 	await get_tree().create_timer(7.0).timeout
 	SpawnHawk()
 	Spawn()
@@ -64,12 +53,6 @@ func _ready() -> void:
 	Spawn()
 	await get_tree().create_timer(5.0).timeout
 	Spawn()
-	await get_tree().create_timer(5.0).timeout
-	Spawn()
-	await get_tree().create_timer(5.0).timeout
-	Spawn()
-	await get_tree().create_timer(5.0).timeout
-	Spawn()
 	SpawnHawk()
 	await get_tree().create_timer(5.0).timeout
 	Spawn()
@@ -79,6 +62,7 @@ func _ready() -> void:
 	await get_tree().create_timer(10.0).timeout
 	Spawn()
 	Spawn()
+	SpawnSnake()
 	SpawnHawk()
 	SpawnHawk()
 	SpawnHawk()

@@ -11,7 +11,7 @@ func _ready() -> void:
 	Global.reset_everything()
 	audioPlayer.stream = load("res://Assets/Sounds/Quack1.wav")
 	backgroundAudioPlayer.stream = load(
-		"res://Assets/Sounds/rison8-identity-and-crisis-129962.mp3")
+		"res://Assets/Sounds/Quack Attack Song Edit 1 Export 2.mp3")
 	
 	audioPlayer.play()
 	backgroundAudioPlayer.play()

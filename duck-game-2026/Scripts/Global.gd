@@ -47,17 +47,17 @@ func is_playing() -> bool:
 		
 
 #Predator stats and functions during the game
-#var predator_stats: Dictionary = {
-	#PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
-	#PredatorType.HAWK: {"hp": 60.0, "speed": 300, "nest_damage": 3.0, "sticks": 3, "score": 2, "flying": true},
-	#PredatorType.SNAKE: {"hp": 300.0, "speed": 100.0, "nest_damage": 20.0, "sticks": 5, "score": 3, "flying": false},
-#}
-
 var predator_stats: Dictionary = {
 	PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
-	PredatorType.HAWK: {"hp": 20.0, "speed": 150, "nest_damage": 2.0, "sticks": 3, "score": 2, "flying": true},
-	PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 3, "flying": false},
+	PredatorType.HAWK: {"hp": 60.0, "speed": 300, "nest_damage": 3.0, "sticks": 3, "score": 2, "flying": true},
+	PredatorType.SNAKE: {"hp": 300.0, "speed": 100.0, "nest_damage": 20.0, "sticks": 5, "score": 3, "flying": false},
 }
+
+#var predator_stats: Dictionary = {
+	#PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
+	#PredatorType.HAWK: {"hp": 20.0, "speed": 150, "nest_damage": 2.0, "sticks": 3, "score": 2, "flying": true},
+	#PredatorType.SNAKE: {"hp": 80.0, "speed": 35.0, "nest_damage": 5.0, "sticks": 5, "score": 3, "flying": false},
+#}
 
 func get_predator_stat(type: int, stat: String):
 	return predator_stats[type][stat]
