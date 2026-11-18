@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	if on_cool_down: return
 	
 	if Input.is_action_pressed("shoot"):
-		print("Holding LEFT")
+		#print("Holding LEFT")
 		holding_down_left = true
 		shoot()
 	else:

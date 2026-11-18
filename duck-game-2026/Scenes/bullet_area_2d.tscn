@@ -7,8 +7,8 @@
 radius = 122.376465
 
 [node name="BulletArea2D" type="Area2D" unique_id=1332803089]
+visible = false
 script = ExtResource("1_eiu4d")
-bullet_prefab = null
 
 [node name="BulletSprite2D" type="Sprite2D" parent="." unique_id=2090375803]
 z_index = 4096

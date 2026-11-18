@@ -41,16 +41,16 @@ func toggle_pause() -> void:
 		
 func end_game() -> void:
 	game_state = GameState.GAME_OVER
-	
+
 func is_playing() -> bool:
 	return game_state == GameState.PLAYING
 		
 
 #Predator stats and functions during the game
 var predator_stats: Dictionary = {
-	PredatorType.FOX:  {"hp": 30.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
-	PredatorType.HAWK: {"hp": 60.0, "speed": 300, "nest_damage": 3.0, "sticks": 3, "score": 2, "flying": true},
-	PredatorType.SNAKE: {"hp": 300.0, "speed": 100.0, "nest_damage": 20.0, "sticks": 5, "score": 3, "flying": false},
+	PredatorType.FOX:  {"hp": 10.0, "speed": 100, "nest_damage": 3.0, "sticks": 2, "score": 1, "flying": false},
+	PredatorType.HAWK: {"hp": 15.0, "speed": 300, "nest_damage": 4.0, "sticks": 3, "score": 2, "flying": true},
+	PredatorType.SNAKE: {"hp": 100.0, "speed": 30.0, "nest_damage": 20.0, "sticks": 5, "score": 5, "flying": false},
 }
 
 #var predator_stats: Dictionary = {
@@ -82,16 +82,16 @@ const start_score_per_kill: int = 10
 const start_egg_fire_rate: int = 1
 # 2 health every second
 const start_regen: float = 5.0
-const level_max_multiplier: float = 1.25
-const start_split_shot: int = 1
+var level_max_multiplier: float = 1.25
+const start_split_shot: int = 0
 
 # FIELDS HERE
 
 # Upgrade stuff here
 const fire_rate_multiplier: float = 1.25
 const egg_damage_multiplier: float = 1.5
-const nest_max_hp_multiplier: float = 1.1
-const regen_multiplier: float = 1.1
+const nest_max_hp_multiplier: float = 2
+const regen_multiplier: float = 2
 
 var egg_damage: float = start_egg_damage
 # egg shots per second

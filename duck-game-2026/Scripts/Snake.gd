@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 		if time_since_attack >= attack_cooldown:
 			time_since_attack = 0.0
 			Global.predator_hit_nest(predator_type)
-			print(Global.nest_hp)
+			#print(Global.nest_hp)
 		
 		
 func _on_area_entered(area: Area2D) -> void:
