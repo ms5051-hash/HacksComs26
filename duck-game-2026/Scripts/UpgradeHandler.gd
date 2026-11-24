@@ -113,7 +113,6 @@ func _tween_up() -> void:
 	await tween_three.finished
 	is_tweening = false
 	is_choosing = false
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -129,11 +128,10 @@ func _determine_upgrade(button_num: int) -> void:
 		Upgrades.Damage:
 			Global.egg_damage *= Global.egg_damage_multiplier
 		Upgrades.Regen:
-			Global.regen *= Global.regen_multiplier
+			get_node("/root/Game/PlayerArea2D/Timer").wait_time /= Global.regen_multiplier
 		Upgrades.SplitShot:
-			Global.split_shot +=1
+			Global.split_shot +=2
 			print(Global.split_shot)
-	pass
 
 func _on_random_one_pressed() -> void:
 	# Upgrade here
@@ -141,7 +139,6 @@ func _on_random_one_pressed() -> void:
 	await _tween_up()
 	if num_of_times_upgraded < Global.level:
 		_tween_down()
-	pass # Replace with function body.
 
 
 func _on_random_two_pressed() -> void:
@@ -150,13 +147,10 @@ func _on_random_two_pressed() -> void:
 	await _tween_up()
 	if num_of_times_upgraded < Global.level:
 		_tween_down()
-	pass # Replace with function body.
 
 
 func _on_random_three_pressed() -> void:
-	
 	_determine_upgrade(2)
 	await _tween_up()
 	if num_of_times_upgraded < Global.level:
 		_tween_down()
-	pass # Replace with function body.
